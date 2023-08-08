@@ -1,0 +1,11 @@
+/**:
+  ros__parameters:
+    port: "/dev/serial/by-id/usb-Lord_Microstrain_Lord_Inertial_Sensor_0000_6253.117494-if00"
+    baudrate    : 115200
+    debug       : False
+    diagnostics : False
+
+    imu_frame_id          : "imu_link"
+    filter_frame_id       : "imu_link"
+    imu_data_rate         : 300
+    filter_data_rate      : 50

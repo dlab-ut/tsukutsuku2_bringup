@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="model" default="$(find-pkg-share sample_sensor_kit_description)/urdf/sensors.xacro" />
+
+    <include file="$(find-pkg-share sample_sensor_kit_launch)/launch/sensing.launch.xml"/>
+    <include file="$(find-pkg-share ypspur_ros2_bridge)/launch/ypspur_ros2_bridge.launch.py"/>
+    <include file="$(find-pkg-share tsukutsuku2_bringup)/launch/teleop_twist.launch.py" />
+    <include file="$(find-pkg-share tsukutsuku2_bringup)/launch/map.launch.xml" />
+    <!-- <include file="$(find-pkg-share tsukutsuku2_bringup)/launch/map_loader.launch.xml" /> -->
+
+    <!-- tf publisher -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" exec="robot_state_publisher">
+            <param name="robot_description" value="$(command 'xacro $(var model)')" />
+    </node>
+    <node name="front_camera" pkg="v4l2_camera" exec="v4l2_camera_node"/>
+    <node name="rviz2" pkg="rviz2" exec="rviz2" args="-d /home/tsukutsuku/autoware/src/tsukutsuku/tsukutsuku2_bringup/rviz/sensor.rviz "/>
+</launch>

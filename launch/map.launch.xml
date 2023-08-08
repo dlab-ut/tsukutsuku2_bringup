@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+  <arg name="place" default="tc" />
+  <arg name="map_path" default="/home/tsukutsuku/maps/$(var place)" />
+  <arg name="pointcloud_map_file" default="map_tc19_o085_f-04_t05.pcd" />
+  <arg name="pointcloud_map_path" default="$(var map_path)/pcd/$(var pointcloud_map_file)" />
+  <arg name="pointcloud_map_loader_param_path" default="$(find-pkg-share tsukutsuku2_bringup)/config/pcd_map_loader.param.yaml" />
+
+  <!-- map loader -->
+  <group>
+    <include file="$(find-pkg-share tsukutsuku2_bringup)/launch/map.launch.py">
+      <arg name="pointcloud_map_path" value="$(var pointcloud_map_path)"/>
+      <arg name="pointcloud_map_loader_param_path" value="$(var pointcloud_map_loader_param_path)"/>
+      <arg name="pointcloud_map_metadata_path" value=""/>
+    </include>
+  </group>
+    
+</launch>

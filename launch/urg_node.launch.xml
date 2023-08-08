@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+  <arg name="front_left_urg_param_file" default="$(find-pkg-share tsukutsuku2_bringup)/config/sensing/front_left_urg.yaml" />
+  <arg name="rear_urg_param_file" default="$(find-pkg-share tsukutsuku2_bringup)/config/sensing/rear_urg.yaml" />
+
+  <arg name="imu_node_name" default="microstrain_inertial_driver" />
+  <arg name="imu_param_file" default="$(find-pkg-share tsukutsuku2_bringup)/config/microstrain_imu/imu.yaml" />
+
+  <!-- front_left_urg -->
+  <group>
+      <push-ros-namespace namespace="front_left_urg" />
+      <include file="$(find-pkg-share urg_node)/launch/urg_lidar.launch.xml">
+        <arg name="param_file" value="$(var front_left_urg_param_file)" />
+      </include>
+  </group>
+
+  <!-- rear_urg -->
+  <group>
+      <push-ros-namespace namespace="rear_urg" />
+      <include file="$(find-pkg-share urg_node)/launch/urg_lidar.launch.xml">
+        <arg name="param_file" value="$(var rear_urg_param_file)" />
+      </include>
+  </group>
+
+  <!-- microstrain_imu -->
+  <group>
+    <push-ros-namespace namespace="microstrain_imu" />
+    <include file="$(find-pkg-share microstrain_inertial_driver)/launch/microstrain_launch.py">
+      <arg name="node_name" value="$(var imu_node_name)" />
+      <arg name="params_file" value="$(var imu_param_file)" />
+      <arg name="configure" value="true" />
+      <arg name="activate" value="true" />
+    </include>
+  </group>
+</launch>
