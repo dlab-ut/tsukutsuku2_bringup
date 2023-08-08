@@ -5,6 +5,7 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
+        - /TF1
         - /Image1
       Splitter Ratio: 0.5
     Tree Height: 716
@@ -25,7 +26,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: front_left_urg
+    SyncSource: ""
 Visualization Manager:
   Class: ""
   Displays:
@@ -72,23 +73,15 @@ Visualization Manager:
           Value: true
         laser_rear:
           Value: true
-        left_camera:
-          Value: true
-        map:
+        left_wheel_link:
           Value: true
         odom:
           Value: true
-        right_camera:
+        right_wheel_link:
           Value: true
-        sensor:
+        velodyne:
           Value: true
-        velodyne_lower:
-          Value: true
-        velodyne_upper:
-          Value: true
-        viewer:
-          Value: true
-      Marker Scale: 1
+      Marker Scale: 0.699999988079071
       Name: TF
       Show Arrows: true
       Show Axes: true
@@ -105,24 +98,18 @@ Visualization Manager:
           hokuyo3d:
             {}
           imu_link:
-            sensor:
-              {}
+            {}
           laser_front_left:
             {}
           laser_front_right:
             {}
           laser_rear:
             {}
-          left_camera:
+          left_wheel_link:
             {}
-          right_camera:
+          right_wheel_link:
             {}
-          velodyne_lower:
-            {}
-          velodyne_upper:
-            {}
-        map:
-          viewer:
+          velodyne:
             {}
         odom:
           {}
@@ -143,7 +130,7 @@ Visualization Manager:
       Enabled: true
       Invert Rainbow: false
       Max Color: 255; 255; 255
-      Max Intensity: 114
+      Max Intensity: 164
       Min Color: 0; 0; 0
       Min Intensity: 0
       Name: Velodyne
@@ -288,16 +275,16 @@ Visualization Manager:
       Channel Name: intensity
       Class: rviz_default_plugins/PointCloud2
       Color: 255; 255; 255
-      Color Transformer: ""
+      Color Transformer: Intensity
       Decay Time: 0
       Enabled: true
       Invert Rainbow: false
       Max Color: 255; 255; 255
-      Max Intensity: 4096
+      Max Intensity: 255
       Min Color: 0; 0; 0
-      Min Intensity: 0
+      Min Intensity: 3
       Name: PointCloud2
-      Position Transformer: ""
+      Position Transformer: XYZ
       Selectable: true
       Size (Pixels): 3
       Size (m): 0.009999999776482582
@@ -315,7 +302,7 @@ Visualization Manager:
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: viewer
+    Fixed Frame: base_link
     Frame Rate: 30
   Name: root
   Tools:
