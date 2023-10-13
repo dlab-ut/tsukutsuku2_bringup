@@ -1,6 +1,6 @@
 bt_navigator:
   ros__parameters:
-    use_sim_time: True
+    # use_sim_time: True
     global_frame: map
     robot_base_frame: base_link
     odom_topic: /localization/pose_twist_fusion_filter/ekf_odom
@@ -42,13 +42,12 @@ bt_navigator:
     - nav2_controller_selector_bt_node
     - nav2_goal_checker_selector_bt_node
 
-bt_navigator_rclcpp_node:
-  ros__parameters:
-    use_sim_time: True
+# bt_navigator_rclcpp_node:
+#   ros__parameters:
+#     use_sim_time: True
 
 controller_server:
   ros__parameters:
-    use_sim_time: True
     controller_frequency: 10.0
     min_x_velocity_threshold: 0.2
     min_y_velocity_threshold: 0.2
@@ -72,7 +71,7 @@ controller_server:
     general_goal_checker:
       stateful: True
       plugin: "nav2_controller::SimpleGoalChecker"
-      xy_goal_tolerance: 2.0
+      xy_goal_tolerance: 0.5
       yaw_goal_tolerance: 0.4363 #25 deg
     
     # FollowPath:
@@ -132,9 +131,9 @@ controller_server:
       # RotateToGoal.lookahead_time: -1.0
       # PreferForward.scale: 32.0
 
-controller_server_rclcpp_node:
-  ros__parameters:
-    use_sim_time: True
+# controller_server_rclcpp_node:
+#   ros__parameters:
+#     use_sim_time: True
 
 local_costmap:
   local_costmap:
@@ -143,7 +142,7 @@ local_costmap:
       publish_frequency: 10.0 #Hz
       global_frame: map
       robot_base_frame: base_link
-      use_sim_time: True
+      # use_sim_time: True
       rolling_window: true
       width: 20
       height: 20
@@ -152,7 +151,7 @@ local_costmap:
       footprint: '[ [0.9, 0.33], [-0.2, 0.33], [-0.2, -0.33], [0.9, -0.33] ]'
       footprint_padding: 0.03
       # robot_radius: 0.9
-      plugins: ["inflation_layer", "obstacle_layer"]
+      plugins: ["static_layer", "inflation_layer", "voxel_layer"]
       # plugins: ["inflation_layer", "stvl_layer", "obstacle_layer"]
       # stvl_layer:
       #   plugin: "spatio_temporal_voxel_layer/SpatioTemporalVoxelLayer"
@@ -190,31 +189,66 @@ local_costmap:
       #     # horizontal_fov_angle: 1.048
       #     decay_acceleration: 15.0
       #     model_type: 1
-      obstacle_layer:
-        plugin: "nav2_costmap_2d::ObstacleLayer"
+      # obstacle_layer:
+      #   plugin: "nav2_costmap_2d::ObstacleLayer"
+      #   enabled: True
+      #   footprint_clearing_enabled: True
+      #   observation_sources: front_left_urg rear_urg 
+      #   front_left_urg:
+      #     topic: /sensing/lidar/front_left_urg/scan
+      #     max_obstacle_height: 1.5
+      #     clearing: True
+      #     marking: True
+      #     inf_is_valid: False
+      #     data_type: "LaserScan"
+      #     expected_update_rate: 40.0
+      #     raytrace_max_range: 10.0
+      #     raytrace_min_range: 0.0
+      #     obstacle_max_range: 10.0
+      #     obstacle_min_range: 0.0
+      #   front_right_urg:
+      #     topic: /sensing/lidar/front_right_urg/scan
+      #     max_obstacle_height: 1.5
+      #     clearing: True
+      #     marking: True
+      #     inf_is_valid: False
+      #     data_type: "LaserScan"
+      #     expected_update_rate: 40.0
+      #     raytrace_max_range: 10.0
+      #     raytrace_min_range: 0.0
+      #     obstacle_max_range: 10.0
+      #     obstacle_min_range: 0.0
+      #   rear_urg:
+      #     topic: /sensing/lidar/rear_urg/scan
+      #     max_obstacle_height: 1.5
+      #     clearing: True
+      #     marking: True
+      #     inf_is_valid: False
+      #     data_type: "LaserScan"
+      #     expected_update_rate: 40.0
+      #     raytrace_max_range: 10.0
+      #     raytrace_min_range: 0.0
+      #     obstacle_max_range: 10.0
+      #     obstacle_min_range: 0.0
+      static_layer:
+        plugin: "nav2_costmap_2d::StaticLayer"
+        map_subscribe_transient_local: True
+      voxel_layer:
+        plugin: "nav2_costmap_2d::VoxelLayer"
         enabled: True
-        footprint_clearing_enabled: True
-        observation_sources: front_left_urg rear_urg 
+        publish_voxel_map: True
+        origin_z: 0.0
+        z_resolution: 0.05
+        z_voxels: 16
+        max_obstacle_height: 1.5
+        mark_threshold: 0
+        observation_sources: front_left_urg rear_urg
         front_left_urg:
           topic: /sensing/lidar/front_left_urg/scan
           max_obstacle_height: 1.5
           clearing: True
           marking: True
-          inf_is_valid: False
           data_type: "LaserScan"
-          expected_update_rate: 40.0
-          raytrace_max_range: 10.0
-          raytrace_min_range: 0.0
-          obstacle_max_range: 10.0
-          obstacle_min_range: 0.0
-        front_right_urg:
-          topic: /sensing/lidar/front_right_urg/scan
-          max_obstacle_height: 1.5
-          clearing: True
-          marking: True
-          inf_is_valid: False
-          data_type: "LaserScan"
-          expected_update_rate: 40.0
           raytrace_max_range: 10.0
           raytrace_min_range: 0.0
           obstacle_max_range: 10.0
@@ -224,7 +258,6 @@ local_costmap:
           max_obstacle_height: 1.5
           clearing: True
           marking: True
-          inf_is_valid: False
           data_type: "LaserScan"
           expected_update_rate: 40.0
           raytrace_max_range: 10.0
@@ -236,12 +269,12 @@ local_costmap:
         cost_scaling_factor: 3.0
         inflation_radius: 0.4
       always_send_full_costmap: True
-  local_costmap_client:
-    ros__parameters:
-      use_sim_time: True
-  local_costmap_rclcpp_node:
-    ros__parameters:
-      use_sim_time: True
+  # local_costmap_client:
+  #   ros__parameters:
+  #     use_sim_time: True
+  # local_costmap_rclcpp_node:
+  #   ros__parameters:
+  #     use_sim_time: True
 
 global_costmap:
   global_costmap:
@@ -250,7 +283,6 @@ global_costmap:
       publish_frequency: 3.0
       global_frame: map
       robot_base_frame: base_link
-      use_sim_time: True
       footprint: '[ [0.9, 0.33], [-0.2, 0.33], [-0.2, -0.33], [0.9, -0.33] ]'
       footprint_padding: 0.03
       # robot_radius: 0.9
@@ -342,21 +374,13 @@ global_costmap:
           raytrace_min_range: 0.0
           obstacle_max_range: 30.0
           obstacle_min_range: 0.0
-  global_costmap_client:
-    ros__parameters:
-      use_sim_time: True
-  global_costmap_rclcpp_node:
-    ros__parameters:
-      use_sim_time: True
 
 map_server:
   ros__parameters:
-    use_sim_time: True
     yaml_filename: "/home/tsukutsuku/maps/campus/ogm/map.yaml"
 
 map_saver:
   ros__parameters:
-    use_sim_time: True
     save_map_timeout: 500.0
     free_thresh_default: 0.25
     occupied_thresh_default: 0.65
@@ -365,7 +389,6 @@ map_saver:
 planner_server:
   ros__parameters:
     expected_planner_frequency: 1.0
-    use_sim_time: True
     planner_plugins: ["GridBased"]
     GridBased:
       plugin: "nav2_smac_planner/SmacPlanner2D"
@@ -378,9 +401,9 @@ planner_server:
         w_data: 0.2
         tolerance: 0.01
 
-planner_server_rclcpp_node:
-  ros__parameters:
-    use_sim_time: True
+# planner_server_rclcpp_node:
+#   ros__parameters:
+#     use_sim_time: True
 
 recoveries_server:
   ros__parameters:
@@ -397,12 +420,11 @@ recoveries_server:
     global_frame: map
     robot_base_frame: base_link
     transform_timeout: 0.1
-    use_sim_time: true
     simulate_ahead_time: 2.0
 
-robot_state_publisher:
-  ros__parameters:
-    use_sim_time: True
+# robot_state_publisher:
+#   ros__parameters:
+#     use_sim_time: True
     
 waypoint_follower:
   ros__parameters:
@@ -413,4 +435,4 @@ waypoint_follower:
       plugin: "nav2_waypoint_follower::InputAtSomeWaypoint"
       enabled: True
       input_topic: "/is_runnable"
-      index: [1,32,36,44,63,65,120,236,252,253] #66 & 253 are traffic light waypoint indices
+      index: [32,36,44,63,65,120,236,252,253] #66 & 253 are traffic light waypoint indices

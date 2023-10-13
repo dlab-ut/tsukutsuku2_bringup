@@ -7,5 +7,5 @@
 
     imu_frame_id          : "imu_link"
     filter_frame_id       : "imu_link"
-    imu_data_rate         : 300
+    imu_data_rate         : 250
     filter_data_rate      : 50

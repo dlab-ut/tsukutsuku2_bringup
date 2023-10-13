@@ -5,10 +5,11 @@
     <arg name="use_sim_time" default="false" />
     <arg name="autostart" default="true" />
     <arg name="robot_model" default="tsukutsuku" />
-    <arg name="place" default="tc" />
+    <arg name="place" default="campus" />
     <arg name="ogm_map_path" default="/home/tsukutsuku/maps/$(var place)" />
-    <arg name="ogm_file" default="map.yaml" />
-    <!-- <arg name="ogm_file" default="map_expanded.yaml" /> -->
+    <!-- <arg name="ogm_file" default="map.yaml" /> -->
+    <arg name="ogm_file" default="map_expanded.yaml" />
+    <!-- <arg name="ogm_path" default="$(var ogm_map_path)/ogm/$(var ogm_file)" /> -->
     <arg name="ogm_path" default="$(var ogm_map_path)/ogm/expanded/$(var ogm_file)" />
     <arg name="nav2_params_file" default="$(find-pkg-share tsukutsuku2_bringup)/config/nav2/nav2_$(var robot_model)_params.yaml" />
 
