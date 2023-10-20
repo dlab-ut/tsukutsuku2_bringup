@@ -7,8 +7,8 @@ bt_navigator:
     enable_groot_monitoring: True
     groot_zmq_publisher_port: 1666
     groot_zmq_server_port: 1667
-    default_nav_through_poses_bt_xml: "/home/tsukutsuku/autoware/src/navigation2/nav2_bt_navigator/behavior_trees/navigate_through_poses_tsukutsuku.xml"
-    default_nav_to_pose_bt_xml: "/home/tsukutsuku/autoware/src/navigation2/nav2_bt_navigator/behavior_trees/navigate_to_pose_tsukutsuku.xml"
+    default_nav_through_poses_bt_xml: "/home/tsukutsuku/autoware/src/tsukutsuku/tsukutsuku2_bringup/config/nav2/navigate_through_poses_tsukutsuku.xml"
+    default_nav_to_pose_bt_xml: "/home/tsukutsuku/autoware/src/tsukutsuku/tsukutsuku2_bringup/config/nav2/navigate_to_pose_tsukutsuku.xml"
     plugin_lib_names:
     - nav2_compute_path_to_pose_action_bt_node
     - nav2_compute_path_through_poses_action_bt_node
@@ -56,6 +56,7 @@ controller_server:
     progress_checker_plugin: "progress_checker"
     goal_checker_plugins: ["general_goal_checker"] # "precise_goal_checker"
     controller_plugins: ["FollowPath"]
+    odom_topic: /localization/pose_twist_fusion_filter/ekf_odom
 
     # Progress checker parameters
     progress_checker:
@@ -386,7 +387,7 @@ global_costmap:
 
 map_server:
   ros__parameters:
-    yaml_filename: "/home/tsukutsuku/maps/campus/ogm/map.yaml"
+    yaml_filename: ""
 
 map_saver:
   ros__parameters:

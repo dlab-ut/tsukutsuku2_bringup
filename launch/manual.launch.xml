@@ -27,5 +27,5 @@
     </node>
 
     <node name="front_camera" pkg="v4l2_camera" exec="v4l2_camera_node"/>
-    <node name="rviz2" pkg="rviz2" exec="rviz2" args="-d /home/tsukutsuku/autoware/src/tsukutsuku/tsukutsuku2_bringup/rviz/localization.rviz "/>
+    <node name="rviz2" pkg="rviz2" exec="rviz2" args="-d $(find-pkg-share tsukutsuku2_bringup)/rviz/localization.rviz "/>
 </launch>
