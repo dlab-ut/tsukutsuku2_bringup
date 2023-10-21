@@ -136,7 +136,7 @@ Visualization Manager:
       Enabled: true
       Invert Rainbow: false
       Max Color: 255; 255; 255
-      Max Intensity: 255
+      Max Intensity: 236
       Min Color: 0; 0; 0
       Min Intensity: 0
       Name: Velodyne
@@ -370,7 +370,7 @@ Visualization Manager:
   Value: true
   Views:
     Current:
-      Angle: 0
+      Angle: -0.7849996089935303
       Class: rviz_default_plugins/TopDownOrtho
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
@@ -380,12 +380,42 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Scale: 6.305920600891113
-      Target Frame: <Fixed Frame>
+      Scale: 10.540091514587402
+      Target Frame: base_link
       Value: TopDownOrtho (rviz_default_plugins)
-      X: 63.47503662109375
-      Y: -82.03169250488281
-    Saved: ~
+      X: -1.6000001430511475
+      Y: -4.6999993324279785
+    Saved:
+      - Angle: 0
+        Class: rviz_default_plugins/TopDownOrtho
+        Enable Stereo Rendering:
+          Stereo Eye Separation: 0.05999999865889549
+          Stereo Focal Distance: 1
+          Swap Stereo Eyes: false
+          Value: false
+        Invert Z Axis: false
+        Name: init
+        Near Clip Distance: 0.009999999776482582
+        Scale: 9.228350639343262
+        Target Frame: <Fixed Frame>
+        Value: TopDownOrtho (rviz_default_plugins)
+        X: 58.40947723388672
+        Y: 69.17288970947266
+      - Angle: -0.7849996089935303
+        Class: rviz_default_plugins/TopDownOrtho
+        Enable Stereo Rendering:
+          Stereo Eye Separation: 0.05999999865889549
+          Stereo Focal Distance: 1
+          Swap Stereo Eyes: false
+          Value: false
+        Invert Z Axis: false
+        Name: base_link
+        Near Clip Distance: 0.009999999776482582
+        Scale: 10.540091514587402
+        Target Frame: base_link
+        Value: TopDownOrtho (rviz_default_plugins)
+        X: -1.6000001430511475
+        Y: -4.6999993324279785
 Window Geometry:
   Displays:
     collapsed: false

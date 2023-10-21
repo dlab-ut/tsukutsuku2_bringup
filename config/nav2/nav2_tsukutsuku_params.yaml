@@ -159,9 +159,9 @@ local_costmap:
           clearing: True
           marking: True
           data_type: "LaserScan"
-          raytrace_max_range: 15.0
+          raytrace_max_range: 8.0
           raytrace_min_range: 0.0
-          obstacle_max_range: 10.0
+          obstacle_max_range: 4.0
           obstacle_min_range: 0.0
         front_right_urg:
           topic: /sensing/lidar/front_right_urg/scan
@@ -170,9 +170,9 @@ local_costmap:
           clearing: True
           marking: True
           data_type: "LaserScan"
-          raytrace_max_range: 15.0
+          raytrace_max_range: 8.0
           raytrace_min_range: 0.0
-          obstacle_max_range: 10.0
+          obstacle_max_range: 4.0
           obstacle_min_range: 0.0
         rear_urg:
           topic: /sensing/lidar/rear_urg/scan
@@ -182,9 +182,9 @@ local_costmap:
           marking: True
           data_type: "LaserScan"
           expected_update_rate: 40.0
-          raytrace_max_range: 15.0
+          raytrace_max_range: 8.0
           raytrace_min_range: 0.0
-          obstacle_max_range: 10.0
+          obstacle_max_range: 4.0
           obstacle_min_range: 0.0
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
@@ -207,20 +207,22 @@ global_costmap:
       robot_base_frame: base_link
       footprint: '[ [0.9, 0.33], [-0.2, 0.33], [-0.2, -0.33], [0.9, -0.33] ]'
       footprint_padding: 0.03
-      resolution: 0.3
+      resolution: 0.1
       track_unknown_space: true
       always_send_full_costmap: True
-      plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
+      plugins: ["static_layer", "inflation_layer", "obstacle_layer"]
       static_layer:
         plugin: "nav2_costmap_2d::StaticLayer"
         map_subscribe_transient_local: True
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
-        cost_scaling_factor: 3.0
-        inflation_radius: 0.1
+        cost_scaling_factor: 1.0
+        inflation_radius: 0.4
       obstacle_layer:
         plugin: "nav2_costmap_2d::ObstacleLayer"
         enabled: True
+        max_obstacle_height: 30.0
+        min_obstacle_height: -30.0
         footprint_clearing_enabled: True
         observation_sources: front_left_urg front_right_urg rear_urg 
         front_left_urg:
@@ -230,9 +232,9 @@ global_costmap:
           clearing: True
           marking: True
           data_type: "LaserScan"
-          raytrace_max_range: 15.0
+          raytrace_max_range: 8.0
           raytrace_min_range: 0.0
-          obstacle_max_range: 10.0
+          obstacle_max_range: 4.0
           obstacle_min_range: 0.0
         front_right_urg:
           topic: /sensing/lidar/front_right_urg/scan
@@ -241,9 +243,9 @@ global_costmap:
           clearing: True
           marking: True
           data_type: "LaserScan"
-          raytrace_max_range: 15.0
+          raytrace_max_range: 8.0
           raytrace_min_range: 0.0
-          obstacle_max_range: 10.0
+          obstacle_max_range: 4.0
           obstacle_min_range: 0.0
         rear_urg:
           topic: /sensing/lidar/rear_urg/scan
@@ -253,9 +255,9 @@ global_costmap:
           marking: True
           data_type: "LaserScan"
           expected_update_rate: 40.0
-          raytrace_max_range: 15.0
+          raytrace_max_range: 8.0
           raytrace_min_range: 0.0
-          obstacle_max_range: 10.0
+          obstacle_max_range: 4.0
           obstacle_min_range: 0.0
 
 map_server:

@@ -74,8 +74,6 @@ Visualization Manager:
           Value: true
         map:
           Value: true
-        ndt_base_link:
-          Value: true
         right_wheel_link:
           Value: true
         velodyne:
@@ -89,32 +87,6 @@ Visualization Manager:
       Show Names: true
       Tree:
         map:
-          base_link:
-            base_footprint:
-              {}
-            caster_link:
-              {}
-            center_camera_link:
-              center_camera:
-                {}
-            hokuyo3d:
-              {}
-            imu_link:
-              {}
-            laser_front_left:
-              {}
-            laser_front_right:
-              {}
-            laser_rear:
-              {}
-            left_wheel_link:
-              {}
-            right_wheel_link:
-              {}
-            velodyne:
-              {}
-          ndt_base_link:
-            {}
           viewer:
             {}
       Update Interval: 0
@@ -134,7 +106,7 @@ Visualization Manager:
       Enabled: true
       Invert Rainbow: false
       Max Color: 255; 255; 255
-      Max Intensity: 198
+      Max Intensity: 193
       Min Color: 0; 0; 0
       Min Intensity: 0
       Name: Velodyne
@@ -307,13 +279,13 @@ Visualization Manager:
       Axes Length: 1
       Axes Radius: 0.10000000149011612
       Class: rviz_default_plugins/Pose
-      Color: 255; 25; 0
-      Enabled: false
+      Color: 0; 255; 255
+      Enabled: true
       Head Length: 0.30000001192092896
-      Head Radius: 0.10000000149011612
+      Head Radius: 0.800000011920929
       Name: Pose
       Shaft Length: 1
-      Shaft Radius: 0.05000000074505806
+      Shaft Radius: 0.5
       Shape: Arrow
       Topic:
         Depth: 5
@@ -322,7 +294,7 @@ Visualization Manager:
         History Policy: Keep Last
         Reliability Policy: Reliable
         Value: /localization/pose_estimator/pose
-      Value: false
+      Value: true
     - Alpha: 1
       Buffer Length: 1
       Class: rviz_default_plugins/Path
@@ -407,10 +379,22 @@ Visualization Manager:
         {}
       Topic:
         Depth: 5
-        Durability Policy: Volatile
+        Durability Policy: Transient Local
         History Policy: Keep Last
         Reliability Policy: Reliable
         Value: /waypoints
+      Value: true
+    - Class: rviz_default_plugins/MarkerArray
+      Enabled: true
+      Name: MarkerArray
+      Namespaces:
+        {}
+      Topic:
+        Depth: 5
+        Durability Policy: Transient Local
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /waypoints_text
       Value: true
   Enabled: true
   Global Options:
@@ -453,12 +437,42 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Scale: 6.698418140411377
+      Scale: 7.681323051452637
       Target Frame: <Fixed Frame>
       Value: TopDownOrtho (rviz_default_plugins)
-      X: 88.5733642578125
-      Y: 90.00521087646484
-    Saved: ~
+      X: 62.04788589477539
+      Y: 78.93244934082031
+    Saved:
+      - Angle: 0
+        Class: rviz_default_plugins/TopDownOrtho
+        Enable Stereo Rendering:
+          Stereo Eye Separation: 0.05999999865889549
+          Stereo Focal Distance: 1
+          Swap Stereo Eyes: false
+          Value: false
+        Invert Z Axis: false
+        Name: init
+        Near Clip Distance: 0.009999999776482582
+        Scale: 7.681323051452637
+        Target Frame: <Fixed Frame>
+        Value: TopDownOrtho (rviz_default_plugins)
+        X: 62.04788589477539
+        Y: 78.93244934082031
+      - Angle: -0.8149986267089844
+        Class: rviz_default_plugins/TopDownOrtho
+        Enable Stereo Rendering:
+          Stereo Eye Separation: 0.05999999865889549
+          Stereo Focal Distance: 1
+          Swap Stereo Eyes: false
+          Value: false
+        Invert Z Axis: false
+        Name: base_link
+        Near Clip Distance: 0.009999999776482582
+        Scale: 32.09019470214844
+        Target Frame: base_link
+        Value: TopDownOrtho (rviz_default_plugins)
+        X: -0.8783493041992188
+        Y: -0.45629119873046875
 Window Geometry:
   Displays:
     collapsed: false
