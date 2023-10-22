@@ -5,7 +5,7 @@
     <arg name="use_sim_time" default="false" />
     <arg name="autostart" default="true" />
     <arg name="robot_model" default="tsukutsuku" />
-    <arg name="place" default="campus" />
+    <arg name="place" default="tc" />
     <arg name="map_path" default="/home/tsukutsuku/maps/$(var place)" />
     <arg name="ogm_file" default="map.yaml" />
     <arg name="ogm_path" default="$(var map_path)/ogm/$(var ogm_file)" />
@@ -33,18 +33,18 @@
 
     <!-- tf publisher -->
     <node name="robot_state_publisher" pkg="robot_state_publisher" exec="robot_state_publisher">
-            <param name="robot_description" value="$(command 'xacro $(var robot_urdf)')" />
+      <param name="robot_description" value="$(command 'xacro $(var robot_urdf)')" />
     </node>
 
     <!-- navigation -->
     <include file="$(find-pkg-share nav2_bringup)/launch/bringup_launch.py">
-            <arg name="use_sim_time" value="$(var use_sim_time)" />
-            <arg name="autostart" value="$(var autostart)" />
-            <arg name="map" value="$(var ogm_path)" />
-            <arg name="params_file" value="$(var nav2_params_file)" />
+      <arg name="use_sim_time" value="$(var use_sim_time)" />
+      <arg name="autostart" value="$(var autostart)" />
+      <arg name="map" value="$(var ogm_path)" />
+      <arg name="params_file" value="$(var nav2_params_file)" />
     </include>
 
-    <include file="$(find-pkg-share inputatwaypoint_sender)/launch/joyctrl.launch.py"/>
+    <include file="$(find-pkg-share inputatwaypoint_sender)/launch/nextwaypoint.launch.py"/>
 
     <!-- <node name="front_camera" pkg="v4l2_camera" exec="v4l2_camera_node"/> -->
     <node name="rviz2" pkg="rviz2" exec="rviz2" args="-d $(find-pkg-share tsukutsuku2_bringup)/rviz/navigation.rviz "/>
