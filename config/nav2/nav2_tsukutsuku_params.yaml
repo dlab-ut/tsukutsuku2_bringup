@@ -114,10 +114,10 @@ controller_server:
       ObstacleFootprint.sum_scores: false
       PathAlign.scale: 24.0
       PathAlign.forward_point_distance: 0.1
-      GoalAlign.scale: 12.0
+      GoalAlign.scale: 6.0
       GoalAlign.forward_point_distance: 0.1
-      PathDist.scale: 24.0
-      GoalDist.scale: 12.0
+      PathDist.scale: 18.0
+      GoalDist.scale: 3.0
       # RotateToGoal.scale: 24.0
       # RotateToGoal.slowing_factor: 5.0
       # RotateToGoal.lookahead_time: -1.0
@@ -189,7 +189,7 @@ local_costmap:
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
         cost_scaling_factor: 3.0
-        inflation_radius: 0.15
+        inflation_radius: 0.2
       always_send_full_costmap: True
   # local_costmap_client:
   #   ros__parameters:
@@ -210,14 +210,14 @@ global_costmap:
       resolution: 0.1
       track_unknown_space: true
       always_send_full_costmap: True
-      plugins: ["static_layer", "inflation_layer", "obstacle_layer"]
+      plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
       static_layer:
         plugin: "nav2_costmap_2d::StaticLayer"
         map_subscribe_transient_local: True
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
-        cost_scaling_factor: 1.0
-        inflation_radius: 0.4
+        cost_scaling_factor: 0.1
+        inflation_radius: 0.6
       obstacle_layer:
         plugin: "nav2_costmap_2d::ObstacleLayer"
         enabled: True
@@ -315,8 +315,9 @@ waypoint_follower:
   ros__parameters:
     loop_rate: 20
     stop_on_failure: false
-    waypoint_task_executor_plugin: "wait_at_waypoint"
-    wait_at_waypoint:
-      plugin: "nav2_waypoint_follower::WaitAtWaypoint"
+    waypoint_task_executor_plugin: "input_at_somewaypoint"   
+    input_at_somewaypoint:
+      plugin: "nav2_waypoint_follower::InputAtSomeWaypoint"
       enabled: True
-      waypoint_pause_duration: 200
+      input_topic: "/input_at_somewaypoint/input"
+      index: [53]
