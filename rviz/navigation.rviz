@@ -3,7 +3,8 @@ Panels:
     Help Height: 78
     Name: Displays
     Property Tree Widget:
-      Expanded: ~
+      Expanded:
+        - /MarkerArray2
       Splitter Ratio: 0.5
     Tree Height: 386
   - Class: rviz_common/Selection
@@ -394,7 +395,7 @@ Visualization Manager:
         Durability Policy: Transient Local
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: /waypoints_text
+        Value: /waypoints_index
       Value: true
   Enabled: true
   Global Options:
@@ -437,11 +438,11 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Scale: 7.681323051452637
+      Scale: 13.537115097045898
       Target Frame: <Fixed Frame>
       Value: TopDownOrtho (rviz_default_plugins)
-      X: 62.04788589477539
-      Y: 78.93244934082031
+      X: 376.145263671875
+      Y: -170.32069396972656
     Saved:
       - Angle: 0
         Class: rviz_default_plugins/TopDownOrtho
@@ -473,6 +474,21 @@ Visualization Manager:
         Value: TopDownOrtho (rviz_default_plugins)
         X: -0.8783493041992188
         Y: -0.45629119873046875
+      - Angle: 0
+        Class: rviz_default_plugins/TopDownOrtho
+        Enable Stereo Rendering:
+          Stereo Eye Separation: 0.05999999865889549
+          Stereo Focal Distance: 1
+          Swap Stereo Eyes: false
+          Value: false
+        Invert Z Axis: false
+        Name: TopDownOrtho
+        Near Clip Distance: 0.009999999776482582
+        Scale: 13.537115097045898
+        Target Frame: <Fixed Frame>
+        Value: TopDownOrtho (rviz_default_plugins)
+        X: 376.145263671875
+        Y: -170.32069396972656
 Window Geometry:
   Displays:
     collapsed: false
