@@ -4,9 +4,6 @@ bt_navigator:
     global_frame: map
     robot_base_frame: base_link
     odom_topic: /localization/pose_twist_fusion_filter/kinematic_state
-    enable_groot_monitoring: True
-    groot_zmq_publisher_port: 1666
-    groot_zmq_server_port: 1667
     default_nav_through_poses_bt_xml: "/home/tsukutsuku/autoware/src/tsukutsuku/tsukutsuku2_bringup/config/nav2/navigate_through_poses_tsukutsuku.xml"
     default_nav_to_pose_bt_xml: "/home/tsukutsuku/autoware/src/tsukutsuku/tsukutsuku2_bringup/config/nav2/navigate_to_pose_tsukutsuku.xml"
     plugin_lib_names:
@@ -83,20 +80,18 @@ controller_server:
       min_vel_y: 0.0
       max_vel_x: 1.4
       max_vel_y: 0.0
-      min_vel_theta: 0.05
-      max_vel_theta: 1.0
+      max_vel_theta: 2.0
       min_speed_xy: 0.05
       max_speed_xy: 1.4
       min_speed_theta: 0.05
-      max_speed_theta: 1.0
       # Add high threshold velocity for turtlebot 3 issue.
       # https://github.com/ROBOTIS-GIT/turtlebot3_simulations/issues/75
       acc_lim_x: 1.0
       acc_lim_y: 0.0
-      acc_lim_theta: 1.0
+      acc_lim_theta: 3.2
       decel_lim_x: -1.0
       decel_lim_y: 0.0
-      decel_lim_theta: -1.0
+      decel_lim_theta: -3.2
       vx_samples: 25
       vy_samples: 0
       vtheta_samples: 50
@@ -327,3 +322,17 @@ waypoint_follower:
       enabled: True
       input_topic: "/input_at_somewaypoint/input"
       index: [53]
+
+velocity_smoother:
+  ros__parameters:
+    smoothing_frequency: 20.0
+    scale_velocities: False
+    feedback: "OPEN_LOOP"
+    max_velocity: [1.5, 0.0, 2.0]
+    min_velocity: [-0.8, 0.0, -2.0]
+    max_accel: [2.5, 0.0, 3.2]
+    max_decel: [-2.5, 0.0, -3.2]
+    deadband_velocity: [0.0, 0.0, 0.0]
+    velocity_timeout: 1.0
+    odom_topic: "odom"
+    odom_duration: 0.1
