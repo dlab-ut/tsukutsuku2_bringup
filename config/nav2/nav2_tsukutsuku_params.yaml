@@ -3,7 +3,7 @@ bt_navigator:
     # use_sim_time: True
     global_frame: map
     robot_base_frame: base_link
-    odom_topic: /localization/pose_twist_fusion_filter/ekf_odom
+    odom_topic: /localization/pose_twist_fusion_filter/kinematic_state
     enable_groot_monitoring: True
     groot_zmq_publisher_port: 1666
     groot_zmq_server_port: 1667
@@ -56,7 +56,7 @@ controller_server:
     progress_checker_plugin: "progress_checker"
     goal_checker_plugins: ["general_goal_checker"] # "precise_goal_checker"
     controller_plugins: ["FollowPath"]
-    odom_topic: /localization/pose_twist_fusion_filter/ekf_odom
+    odom_topic: /localization/pose_twist_fusion_filter/kinematic_state
 
     # Progress checker parameters
     progress_checker:
@@ -82,12 +82,13 @@ controller_server:
       min_vel_x: 0.05
       min_vel_y: 0.0
       max_vel_x: 1.4
-      max_vel_y: 1.4
+      max_vel_y: 0.0
       min_vel_theta: 0.05
       max_vel_theta: 1.0
       min_speed_xy: 0.05
       max_speed_xy: 1.4
       min_speed_theta: 0.05
+      max_speed_theta: 1.0
       # Add high threshold velocity for turtlebot 3 issue.
       # https://github.com/ROBOTIS-GIT/turtlebot3_simulations/issues/75
       acc_lim_x: 1.0
@@ -221,7 +222,7 @@ global_costmap:
         inflation_radius: 0.6
       inflation_layer2:
         plugin: "nav2_costmap_2d::InflationLayer"
-        cost_scaling_factor: 0.05
+        cost_scaling_factor: 3.0
         inflation_radius: 0.2
       obstacle_layer:
         plugin: "nav2_costmap_2d::ObstacleLayer"
@@ -295,18 +296,18 @@ planner_server:
 #   ros__parameters:
 #     use_sim_time: True
 
-recoveries_server:
+behavior_server:
   ros__parameters:
     costmap_topic: local_costmap/costmap_raw
     footprint_topic: local_costmap/published_footprint
     cycle_frequency: 10.0
-    recovery_plugins: ["wait", "backup", "spin"]
+    behavior_plugins: ["wait", "backup", "spin"]
     wait:
-      plugin: "nav2_recoveries/Wait"
+      plugin: "nav2_behaviors/Wait"
     backup:
-      plugin: "nav2_recoveries/BackUp"
+      plugin: "nav2_behaviors/BackUp"
     spin:
-      plugin: "nav2_recoveries/Spin"
+      plugin: "nav2_behaviors/Spin"
     global_frame: map
     robot_base_frame: base_link
     transform_timeout: 0.1
