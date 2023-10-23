@@ -4,8 +4,8 @@ bt_navigator:
     global_frame: map
     robot_base_frame: base_link
     odom_topic: /localization/pose_twist_fusion_filter/kinematic_state
-    default_nav_through_poses_bt_xml: "/home/tsukutsuku/autoware/src/tsukutsuku/tsukutsuku2_bringup/config/nav2/navigate_through_poses_tsukutsuku.xml"
-    default_nav_to_pose_bt_xml: "/home/tsukutsuku/autoware/src/tsukutsuku/tsukutsuku2_bringup/config/nav2/navigate_to_pose_tsukutsuku.xml"
+    default_nav_through_poses_bt_xml: "(find-pkg-share tsukutsuku2_bringup)/config/nav2/navigate_through_poses_tsukutsuku.xml"
+    default_nav_to_pose_bt_xml: "(find-pkg-share tsukutsuku2_bringup)/config/nav2/navigate_to_pose_tsukutsuku.xml"
     plugin_lib_names:
     - nav2_compute_path_to_pose_action_bt_node
     - nav2_compute_path_through_poses_action_bt_node
