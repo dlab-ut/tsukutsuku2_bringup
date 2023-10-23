@@ -83,11 +83,11 @@ controller_server:
       min_vel_y: 0.0
       max_vel_x: 1.4
       max_vel_y: 1.4
-      min_vel_theta: 0.5
+      min_vel_theta: 0.05
       max_vel_theta: 1.0
       min_speed_xy: 0.05
       max_speed_xy: 1.4
-      min_speed_theta: 0.5
+      min_speed_theta: 0.05
       # Add high threshold velocity for turtlebot 3 issue.
       # https://github.com/ROBOTIS-GIT/turtlebot3_simulations/issues/75
       acc_lim_x: 1.0
@@ -96,10 +96,10 @@ controller_server:
       decel_lim_x: -1.0
       decel_lim_y: 0.0
       decel_lim_theta: -1.0
-      vx_samples: 50
-      vy_samples: 20
+      vx_samples: 25
+      vy_samples: 0
       vtheta_samples: 50
-      sim_time: 1.0
+      sim_time: 2.0
       linear_granularity: 0.1
       angular_granularity: 0.025
       transform_tolerance: 0.2
@@ -211,7 +211,7 @@ global_costmap:
       resolution: 0.1
       track_unknown_space: true
       always_send_full_costmap: True
-      plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
+      plugins: ["static_layer", "inflation_layer", "obstacle_layer", "inflation_layer2"]
       static_layer:
         plugin: "nav2_costmap_2d::StaticLayer"
         map_subscribe_transient_local: True
@@ -219,6 +219,10 @@ global_costmap:
         plugin: "nav2_costmap_2d::InflationLayer"
         cost_scaling_factor: 0.1
         inflation_radius: 0.6
+      inflation_layer2:
+        plugin: "nav2_costmap_2d::InflationLayer"
+        cost_scaling_factor: 0.05
+        inflation_radius: 0.2
       obstacle_layer:
         plugin: "nav2_costmap_2d::ObstacleLayer"
         enabled: True

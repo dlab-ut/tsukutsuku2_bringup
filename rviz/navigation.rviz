@@ -3,8 +3,7 @@ Panels:
     Help Height: 78
     Name: Displays
     Property Tree Widget:
-      Expanded:
-        - /MarkerArray2
+      Expanded: ~
       Splitter Ratio: 0.5
     Tree Height: 386
   - Class: rviz_common/Selection
@@ -75,6 +74,8 @@ Visualization Manager:
           Value: true
         map:
           Value: true
+        ndt_base_link:
+          Value: true
         right_wheel_link:
           Value: true
         velodyne:
@@ -88,6 +89,32 @@ Visualization Manager:
       Show Names: true
       Tree:
         map:
+          base_link:
+            base_footprint:
+              {}
+            caster_link:
+              {}
+            center_camera_link:
+              center_camera:
+                {}
+            hokuyo3d:
+              {}
+            imu_link:
+              {}
+            laser_front_left:
+              {}
+            laser_front_right:
+              {}
+            laser_rear:
+              {}
+            left_wheel_link:
+              {}
+            right_wheel_link:
+              {}
+            velodyne:
+              {}
+          ndt_base_link:
+            {}
           viewer:
             {}
       Update Interval: 0
@@ -304,7 +331,7 @@ Visualization Manager:
       Head Diameter: 0.30000001192092896
       Head Length: 0.20000000298023224
       Length: 0.30000001192092896
-      Line Style: Lines
+      Line Style: Billboards
       Line Width: 0.029999999329447746
       Name: Path
       Offset:
@@ -377,7 +404,7 @@ Visualization Manager:
       Enabled: true
       Name: MarkerArray
       Namespaces:
-        {}
+        waypoints_marker: true
       Topic:
         Depth: 5
         Durability Policy: Transient Local
@@ -389,7 +416,7 @@ Visualization Manager:
       Enabled: true
       Name: MarkerArray
       Namespaces:
-        {}
+        waypoints_text_marker: true
       Topic:
         Depth: 5
         Durability Policy: Transient Local
