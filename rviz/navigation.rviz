@@ -485,7 +485,7 @@ Visualization Manager:
           Swap Stereo Eyes: false
           Value: false
         Invert Z Axis: false
-        Name: init
+        Name: Init Campus
         Near Clip Distance: 0.009999999776482582
         Scale: 7.681323051452637
         Target Frame: <Fixed Frame>
@@ -515,7 +515,7 @@ Visualization Manager:
           Swap Stereo Eyes: false
           Value: false
         Invert Z Axis: false
-        Name: TopDownOrtho
+        Name: Init TC
         Near Clip Distance: 0.009999999776482582
         Scale: 13.537115097045898
         Target Frame: <Fixed Frame>
