@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="use_sim_time" default="false" />
+    <arg name="autostart" default="true" />
+    <arg name="robot_model" default="tsukutsuku" />
+    <arg name="place" default="campus" />
+    <arg name="map_path" default="/home/tsukutsuku/maps/$(var place)" />
+    <arg name="ogm_file" default="map.yaml" />
+    <arg name="ogm_path" default="$(var map_path)/ogm/$(var ogm_file)" />
+    <arg name="nav2_params_file" default="$(find-pkg-share tsukutsuku2_bringup)/config/nav2/nav2_$(var robot_model)_params.yaml" />
+
+    <arg name="robot_urdf" default="$(find-pkg-share tsukutsuku2_description)/urdf/tsukutsuku.urdf.xacro" />
+
+    <include file="$(find-pkg-share tsukutsuku_sensor_kit_launch)/launch/sensing.launch.xml"/>
+
+    <include file="$(find-pkg-share ypspur_ros2_bridge)/launch/ypspur_ros2_bridge.launch.py">
+      <arg name="params_file" value="$(find-pkg-share tsukutsuku2_description)/config/ypspur_ros2_bridge_params.yaml"/>
+      <arg name="twist_topic" value="/sensing/vehicle_velocity_converter/twist_with_covariance"/>
+    </include>
+    <include file="$(find-pkg-share tsukutsuku2_bringup)/launch/teleop_twist.launch.py" />
+
+    <include file="$(find-pkg-share tsukutsuku2_bringup)/launch/map.launch.xml" />
+
+    <!-- Localization -->
+    <arg name="system_run_mode" default="logging_simulation" description="run mode in system"/>
+    <include file="$(find-pkg-share autoware_launch)/launch/components/tier4_localization_component.launch.xml">
+      <arg name="use_pointcloud_container" value="false"/>
+      <arg name="input_pointcloud" value="/sensing/lidar/velodyne/outlier_filtered/pointcloud"/>
+    </include>
+
+    <!-- API -->
+    <include file="$(find-pkg-share tsukutsuku2_bringup)/launch/tier4_autoware_api_component.launch.xml"/>
+
+    <!-- tf publisher -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" exec="robot_state_publisher">
+      <param name="robot_description" value="$(command 'xacro $(var robot_urdf)')" />
+    </node>
+
+    <node name="front_camera" pkg="v4l2_camera" exec="v4l2_camera_node">
+      <param name="pixel_format" value="YUYV" />
+      <param name="output_encording" value="yuv422" />
+    </node>
+
+    <!-- navigation -->
+    <include file="$(find-pkg-share tsukutsuku2_bringup)/launch/bringup_launch_only_mapserver.py">
+      <arg name="use_sim_time" value="$(var use_sim_time)" />
+      <arg name="autostart" value="$(var autostart)" />
+      <arg name="map" value="$(var ogm_path)" />
+      <arg name="params_file" value="$(var nav2_params_file)" />
+    </include>
+
+    <!-- <include file="$(find-pkg-share inputatwaypoint_sender)/launch/nextwaypoint.launch.py"/> -->
+
+    <!-- <node name="front_camera" pkg="v4l2_camera" exec="v4l2_camera_node"/> -->
+    <node name="rviz2" pkg="rviz2" exec="rviz2" args="-d $(find-pkg-share tsukutsuku2_bringup)/rviz/display_map.rviz "/>
+    
+</launch>
