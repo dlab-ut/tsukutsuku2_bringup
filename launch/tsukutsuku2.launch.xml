@@ -17,7 +17,7 @@
       <arg name="params_file" value="$(find-pkg-share tsukutsuku2_description)/config/ypspur_ros2_bridge_params.yaml"/>
       <arg name="twist_topic" value="/sensing/vehicle_velocity_converter/twist_with_covariance"/>
     </include>
-    <!-- <include file="$(find-pkg-share tsukutsuku2_bringup)/launch/teleop_twist.launch.py" /> -->
+    <!-- <include file="$(find-pkg-share tsukutsuku2_bringup)/launch/joy_to_twist.launch.py" /> -->
 
     <include file="$(find-pkg-share tsukutsuku2_bringup)/launch/autoware/map.launch.xml" />
 
@@ -46,6 +46,9 @@
 
     <include file="$(find-pkg-share inputatwaypoint_sender)/launch/nextwaypoint.launch.py"/>
 
-    <!-- <node name="front_camera" pkg="v4l2_camera" exec="v4l2_camera_node"/> -->
+    <node name="front_camera" pkg="v4l2_camera" exec="v4l2_camera_node">
+      <param name="pixel_format" value="YUYV" />
+      <param name="output_encording" value="yuv422" />
+    </node>
     <node name="rviz2" pkg="rviz2" exec="rviz2" args="-d $(find-pkg-share tsukutsuku2_bringup)/rviz/navigation.rviz "/>
 </launch>

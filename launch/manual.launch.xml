@@ -7,7 +7,7 @@
       <arg name="params_file" value="$(find-pkg-share tsukutsuku2_description)/config/ypspur_ros2_bridge_params.yaml"/>
       <arg name="twist_topic" value="/sensing/vehicle_velocity_converter/twist_with_covariance"/>
     </include>
-    <include file="$(find-pkg-share tsukutsuku2_bringup)/launch/teleop_twist.launch.py" />
+    <include file="$(find-pkg-share tsukutsuku2_bringup)/launch/joy_to_twist.launch.py" />
 
     <include file="$(find-pkg-share tsukutsuku2_bringup)/autoware/launch/map.launch.xml" />
 
