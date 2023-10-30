@@ -9,7 +9,7 @@
 
   <!-- map loader -->
   <group>
-    <include file="$(find-pkg-share tsukutsuku2_bringup)/launch/map.launch.py">
+    <include file="$(find-pkg-share tsukutsuku2_bringup)/launch/autoware/map.launch.py">
       <arg name="pointcloud_map_path" value="$(var pointcloud_map_path)"/>
       <arg name="pointcloud_map_loader_param_path" value="$(var pointcloud_map_loader_param_path)"/>
       <arg name="pointcloud_map_metadata_path" value=""/>

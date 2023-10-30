@@ -16,8 +16,8 @@
 
   <!-- AD API -->
   <group>
-    <include file="$(find-pkg-share tsukutsuku2_bringup)/launch/default_ad_api.launch.py" if="$(var launch_default_ad_api)"/>
-    <include file="$(find-pkg-share tsukutsuku2_bringup)/launch/rviz_adaptors.launch.xml" if="$(var launch_rviz_adaptors)"/>
+    <include file="$(find-pkg-share tsukutsuku2_bringup)/launch/autoware/default_ad_api.launch.py" if="$(var launch_default_ad_api)"/>
+    <include file="$(find-pkg-share tsukutsuku2_bringup)/launch/autoware/rviz_adaptors.launch.xml" if="$(var launch_rviz_adaptors)"/>
   </group>
 
 </launch>

@@ -19,7 +19,7 @@
     </include>
     <!-- <include file="$(find-pkg-share tsukutsuku2_bringup)/launch/teleop_twist.launch.py" /> -->
 
-    <include file="$(find-pkg-share tsukutsuku2_bringup)/launch/map.launch.xml" />
+    <include file="$(find-pkg-share tsukutsuku2_bringup)/launch/autoware/map.launch.xml" />
 
     <!-- Localization -->
     <arg name="system_run_mode" default="logging_simulation" description="run mode in system"/>
@@ -29,7 +29,7 @@
     </include>
 
     <!-- API -->
-    <include file="$(find-pkg-share tsukutsuku2_bringup)/launch/tier4_autoware_api_component.launch.xml"/>
+    <include file="$(find-pkg-share tsukutsuku2_bringup)/launch/autoware/tier4_autoware_api_component.launch.xml"/>
 
     <!-- tf publisher -->
     <node name="robot_state_publisher" pkg="robot_state_publisher" exec="robot_state_publisher">
