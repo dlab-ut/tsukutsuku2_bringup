@@ -38,6 +38,8 @@ bt_navigator:
     - nav2_planner_selector_bt_node
     - nav2_controller_selector_bt_node
     - nav2_goal_checker_selector_bt_node
+    - nav2_path_longer_on_approach_bt_node
+    - nav2_controller_cancel_bt_node
 
 # bt_navigator_rclcpp_node:
 #   ros__parameters:
@@ -88,14 +90,14 @@ controller_server:
       # https://github.com/ROBOTIS-GIT/turtlebot3_simulations/issues/75
       acc_lim_x: 1.0
       acc_lim_y: 0.0
-      acc_lim_theta: 3.2
+      acc_lim_theta: 1.6
       decel_lim_x: -1.0
       decel_lim_y: 0.0
-      decel_lim_theta: -3.2
+      decel_lim_theta: -1.6
       vx_samples: 25
       vy_samples: 0
       vtheta_samples: 50
-      sim_time: 2.0
+      sim_time: 1.5
       linear_granularity: 0.1
       angular_granularity: 0.025
       transform_tolerance: 0.2
