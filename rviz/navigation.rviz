@@ -430,6 +430,34 @@ Visualization Manager:
         Reliability Policy: Reliable
         Value: /local_costmap/published_footprint
       Value: true
+    - Class: rviz_2d_overlay_plugins/PieChartOverlay
+      Enabled: true
+      Name: Speed
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /cmd_vel_linear_x
+      Value: true
+      auto color change: true
+      background color: 0; 0; 0
+      backround alpha: 0
+      clockwise rotate direction: true
+      foreground alpha: 0.699999988079071
+      foreground alpha 2: 0.4000000059604645
+      foreground color: 25; 255; 240
+      left: 30
+      max color: 255; 0; 0
+      max color change threthold: 1.2000000476837158
+      max value: 1.600000023841858
+      med color: 255; 85; 0
+      med color change threthold: 0.6000000238418579
+      min value: 0
+      show caption: true
+      size: 128
+      text size: 20
+      top: 20
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
