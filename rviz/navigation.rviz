@@ -284,7 +284,7 @@ Visualization Manager:
       Head Length: 0.30000001192092896
       Head Radius: 0.800000011920929
       Name: Pose
-      Shaft Length: 1
+      Shaft Length: 0.8
       Shaft Radius: 0.5
       Shape: Arrow
       Topic:
@@ -305,7 +305,7 @@ Visualization Manager:
       Length: 0.30000001192092896
       Line Style: Billboards
       Line Width: 0.029999999329447746
-      Name: Path
+      Name: LocalPath
       Offset:
         X: 0
         Y: 0
@@ -333,7 +333,7 @@ Visualization Manager:
       Length: 0.30000001192092896
       Line Style: Lines
       Line Width: 0.029999999329447746
-      Name: Path
+      Name: GlobalPath
       Offset:
         X: 0
         Y: 0
@@ -442,10 +442,10 @@ Visualization Manager:
       Value: true
       auto color change: true
       background color: 0; 0; 0
-      backround alpha: 0
+      backround alpha: 0.8
       clockwise rotate direction: true
-      foreground alpha: 0.699999988079071
-      foreground alpha 2: 0.4000000059604645
+      foreground alpha: 1
+      foreground alpha 2: 1
       foreground color: 25; 255; 240
       left: 30
       max color: 255; 0; 0
@@ -455,8 +455,8 @@ Visualization Manager:
       med color change threthold: 0.6000000238418579
       min value: 0
       show caption: true
-      size: 128
-      text size: 20
+      size: 172
+      text size: 35
       top: 20
   Enabled: true
   Global Options:
