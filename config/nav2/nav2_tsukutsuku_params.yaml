@@ -55,7 +55,8 @@ controller_server:
     progress_checker_plugin: "progress_checker"
     goal_checker_plugins: ["general_goal_checker"] # "precise_goal_checker"
     controller_plugins: ["FollowPath"]
-    odom_topic: /localization/pose_twist_fusion_filter/kinematic_state
+    # odom_topic: /localization/pose_twist_fusion_filter/kinematic_state
+    odom_topic: /odom
 
     # Progress checker parameters
     progress_checker:
@@ -101,7 +102,7 @@ controller_server:
       linear_granularity: 0.1
       angular_granularity: 0.025
       transform_tolerance: 0.2
-      xy_goal_tolerance: 0.25
+      xy_goal_tolerance: 0.50
       trans_stopped_velocity: 0.25
       short_circuit_trajectory_evaluation: True
       stateful: True
@@ -219,8 +220,8 @@ global_costmap:
         inflation_radius: 0.8
       inflation_layer2:
         plugin: "nav2_costmap_2d::InflationLayer"
-        cost_scaling_factor: 3.0
-        inflation_radius: 0.2
+        cost_scaling_factor: 2.0
+        inflation_radius: 0.4
       obstacle_layer:
         plugin: "nav2_costmap_2d::ObstacleLayer"
         enabled: True
@@ -297,7 +298,7 @@ behavior_server:
   ros__parameters:
     costmap_topic: local_costmap/costmap_raw
     footprint_topic: local_costmap/published_footprint
-    cycle_frequency: 10.0
+    cycle_frequency: 2.0
     behavior_plugins: ["wait", "backup", "spin"]
     wait:
       plugin: "nav2_behaviors/Wait"
@@ -308,7 +309,7 @@ behavior_server:
     global_frame: map
     robot_base_frame: base_link
     transform_timeout: 0.1
-    simulate_ahead_time: 2.0
+    simulate_ahead_time: 0.5
 
 # robot_state_publisher:
 #   ros__parameters:
