@@ -5,6 +5,10 @@
 -->
 <root main_tree_to_execute="MainTree">
   <BehaviorTree ID="MainTree">
+    <Sequence name="ClearingActions">
+      <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
+      <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
+    </Sequence>
     <RecoveryNode number_of_retries="6" name="NavigateRecovery">
       <PipelineSequence name="NavigateWithReplanning">
         <RateController hz="2">
@@ -16,9 +20,9 @@
             <ReactiveFallback name="ComputePathThroughPosesRecoveryFallback">
               <GoalUpdated/>
               <Sequence name="ClearingActionWithWait">
-                <Wait wait_duration="2" />
                 <!-- <ClearEntireCostmap name="ClearGlobalCostmap-Context" service_name="global_costmap/clear_entirely_global_costmap"/> -->
-                <ClearCostmapAroundRobot name="ClearGlobalCostmap-Context" service_name="global_costmap/clear_around_global_costmap" reset_distance="8.0"/>
+                <ClearCostmapAroundRobot name="ClearGlobalCostmap-Context" service_name="global_costmap/clear_around_global_costmap" reset_distance="16.0"/>
+                <Wait wait_duration="0.5" />
               </Sequence>
             </ReactiveFallback>
           </RecoveryNode>
@@ -38,7 +42,7 @@
             <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
             <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
           </Sequence>
-          <Wait wait_duration="5" />
+          <Wait wait_duration="3" />
           <BackUp backup_dist="0.60" backup_speed="0.15"/>
         </RoundRobin>
       </ReactiveFallback>
