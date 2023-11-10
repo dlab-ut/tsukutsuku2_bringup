@@ -394,14 +394,29 @@ Visualization Manager:
           Swap Stereo Eyes: false
           Value: false
         Invert Z Axis: false
-        Name: init
+        Name: Init Campus
         Near Clip Distance: 0.009999999776482582
-        Scale: 9.228350639343262
+        Scale: 7.681323051452637
         Target Frame: <Fixed Frame>
         Value: TopDownOrtho (rviz_default_plugins)
-        X: 58.40947723388672
-        Y: 69.17288970947266
-      - Angle: -0.7849996089935303
+        X: 62.04788589477539
+        Y: 78.93244934082031
+      - Angle: 0
+        Class: rviz_default_plugins/TopDownOrtho
+        Enable Stereo Rendering:
+          Stereo Eye Separation: 0.05999999865889549
+          Stereo Focal Distance: 1
+          Swap Stereo Eyes: false
+          Value: false
+        Invert Z Axis: false
+        Name: Init TC
+        Near Clip Distance: 0.009999999776482582
+        Scale: 13.537115097045898
+        Target Frame: <Fixed Frame>
+        Value: TopDownOrtho (rviz_default_plugins)
+        X: 376.145263671875
+        Y: -170.32069396972656
+      - Angle: -1.5749989748001099
         Class: rviz_default_plugins/TopDownOrtho
         Enable Stereo Rendering:
           Stereo Eye Separation: 0.05999999865889549
@@ -411,11 +426,11 @@ Visualization Manager:
         Invert Z Axis: false
         Name: base_link
         Near Clip Distance: 0.009999999776482582
-        Scale: 10.540091514587402
+        Scale: 32.09019470214844
         Target Frame: base_link
         Value: TopDownOrtho (rviz_default_plugins)
-        X: -1.6000001430511475
-        Y: -4.6999993324279785
+        X: -0.8783493041992188
+        Y: -0.45629119873046875
 Window Geometry:
   Displays:
     collapsed: false

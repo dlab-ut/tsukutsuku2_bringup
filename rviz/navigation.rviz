@@ -520,21 +520,6 @@ Visualization Manager:
         Value: TopDownOrtho (rviz_default_plugins)
         X: 62.04788589477539
         Y: 78.93244934082031
-      - Angle: -1.5749989748001099
-        Class: rviz_default_plugins/TopDownOrtho
-        Enable Stereo Rendering:
-          Stereo Eye Separation: 0.05999999865889549
-          Stereo Focal Distance: 1
-          Swap Stereo Eyes: false
-          Value: false
-        Invert Z Axis: false
-        Name: base_link
-        Near Clip Distance: 0.009999999776482582
-        Scale: 32.09019470214844
-        Target Frame: base_link
-        Value: TopDownOrtho (rviz_default_plugins)
-        X: -0.8783493041992188
-        Y: -0.45629119873046875
       - Angle: 0
         Class: rviz_default_plugins/TopDownOrtho
         Enable Stereo Rendering:
@@ -550,6 +535,21 @@ Visualization Manager:
         Value: TopDownOrtho (rviz_default_plugins)
         X: 376.145263671875
         Y: -170.32069396972656
+      - Angle: -1.5749989748001099
+        Class: rviz_default_plugins/TopDownOrtho
+        Enable Stereo Rendering:
+          Stereo Eye Separation: 0.05999999865889549
+          Stereo Focal Distance: 1
+          Swap Stereo Eyes: false
+          Value: false
+        Invert Z Axis: false
+        Name: base_link
+        Near Clip Distance: 0.009999999776482582
+        Scale: 32.09019470214844
+        Target Frame: base_link
+        Value: TopDownOrtho (rviz_default_plugins)
+        X: -0.8783493041992188
+        Y: -0.45629119873046875
 Window Geometry:
   Displays:
     collapsed: false
