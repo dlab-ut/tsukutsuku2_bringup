@@ -1,0 +1,39 @@
+collision_monitor:
+  ros__parameters:
+    base_frame_id: "base_footprint"
+    odom_frame_id: "map"
+    cmd_vel_in_topic: "cmd_vel_nav"
+    cmd_vel_out_topic: "cmd_vel_limited"
+    transform_tolerance: 0.5
+    source_timeout: 0.0
+    base_shift_correction: True
+    stop_pub_timeout: 2.0
+    # Polygons represent zone around the robot for "stop" and "slowdown" action types,
+    # and robot footprint for "approach" action type.
+    # Footprint could be "polygon" type with dynamically set footprint from footprint_topic
+    # or "circle" type with static footprint set by radius. "footprint_topic" parameter
+    # to be ignored in circular case.
+    polygons: ["Slow20percent", "Slow40percent"]
+    Slow20percent:
+      type: "polygon"
+      points: [2.9, 0.7, 2.9, -0.7, 0.5, -0.7, 0.5, 0.7]
+      action_type: "slowdown"
+      max_points: 5
+      slowdown_ratio: 0.2
+      visualize: True
+      polygon_pub_topic: "slow_20percent"
+    Slow40percent:
+      type: "polygon"
+      points: [1.9, 0.5, 1.9, -0.5, 0.5, -0.5, 0.5, 0.5]
+      action_type: "slowdown"
+      max_points: 5
+      slowdown_ratio: 0.4
+      visualize: True
+      polygon_pub_topic: "slow_40percent"
+    observation_sources: ["front_left_urg", "front_right_urg"]
+    front_left_urg:
+      type: "scan"
+      topic: "/sensing/lidar/front_left_urg/scan"
+    front_right_urg:
+      type: "scan"
+      topic: "/sensing/lidar/front_right_urg/scan"

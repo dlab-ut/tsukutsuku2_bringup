@@ -44,6 +44,10 @@
       <arg name="params_file" value="$(var nav2_params_file)" />
     </include>
 
+    <include file="$(find-pkg-share nav2_collision_monitor)/launch/collision_monitor_node.launch.py">
+      <arg name="params_file" value="$(find-pkg-share tsukutsuku2_bringup)/config/nav2/collision_monitor_params.yaml" />
+    </include>
+
     <include file="$(find-pkg-share inputatwaypoint_sender)/launch/nextwaypoint.launch.py"/>
 
     <node name="cmd_vel_publisher" pkg="speed_publisher" exec="cmd_vel_publisher"/>
