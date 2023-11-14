@@ -110,7 +110,7 @@ controller_server:
       critics: ["ObstacleFootprint", "PathAlign", "PathDist", "GoalAlign", "GoalDist"]
       BaseObstacle.scale: 0.01
       BaseObstacle.sum_scores: false
-      ObstacleFootprint.scale: 0.02
+      ObstacleFootprint.scale: 0.005
       ObstacleFootprint.sum_scores: false
       PathAlign.scale: 24.0
       PathAlign.forward_point_distance: 0.1
