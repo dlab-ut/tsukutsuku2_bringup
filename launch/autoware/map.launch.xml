@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- revised from https://github.com/autowarefoundation/autoware_launch/blob/main/autoware_launch/launch/components/tier4_map_component.launch.xml -->
 <launch>
 
   <arg name="place" default="campus" />

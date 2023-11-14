@@ -12,6 +12,7 @@ from launch_ros.descriptions import ComposableNode
 from nav2_common.launch import RewrittenYaml
 from launch import substitutions
 
+# revised from https://navigation.ros.org/tutorials/docs/navigation2_with_keepout_filter.html#configure-costmap-filter-info-publisher-server
 
 def generate_launch_description():
     # Get the launch directory

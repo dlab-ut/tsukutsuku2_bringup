@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <launch>
+    <!-- arguments -->
     <arg name="robot_urdf" default="$(find-pkg-share tsukutsuku2_description)/urdf/tsukutsuku.urdf.xacro" />
 
     <arg name="use_sim_time" default="false" />
@@ -16,8 +17,10 @@
     <arg name="filter_path" default="$(find-pkg-share tsukutsuku2_bringup)/config/nav2/filter_params.yaml" />
     <arg name="nav2_params_file" default="$(find-pkg-share tsukutsuku2_bringup)/config/nav2/nav2_$(var robot_model)_params.yaml" />
 
+    <!-- sensing -->
     <include file="$(find-pkg-share tsukutsuku_sensor_kit_launch)/launch/sensing.launch.xml"/>
 
+    <!-- ypspur -->
     <include file="$(find-pkg-share ypspur_ros2_bridge)/launch/ypspur_ros2_bridge.launch.py">
       <arg name="params_file" value="$(find-pkg-share tsukutsuku2_description)/config/ypspur_ros2_bridge_params.yaml"/>
       <arg name="twist_topic" value="/sensing/vehicle_velocity_converter/twist_with_covariance"/>
@@ -42,7 +45,7 @@
     </node>
 
     <!-- navigation -->
-    <include file="$(find-pkg-share nav2_bringup)/launch/bringup_launch.py">
+    <include file="$(find-pkg-share tsukutsuku2_bringup)/launch/nav2/bringup_launch.py">
       <arg name="use_sim_time" value="$(var use_sim_time)" />
       <arg name="autostart" value="$(var autostart)" />
       <arg name="map" value="$(var ogm_path)" />

@@ -1,3 +1,4 @@
+<!-- revised from https://github.com/autowarefoundation/autoware.universe/blob/main/system/default_ad_api_helpers/ad_api_adaptors/launch/rviz_adaptors.launch.xml -->
 <launch>
   <group>
     <push-ros-namespace namespace="default_ad_api/helpers"/>

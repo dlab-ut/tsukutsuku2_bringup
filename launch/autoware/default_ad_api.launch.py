@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# revised from https://github.com/autowarefoundation/autoware.universe/blob/main/system/default_ad_api/launch/default_ad_api.launch.py
+
 import launch
 from launch.actions import DeclareLaunchArgument
 from launch.substitutions import LaunchConfiguration
