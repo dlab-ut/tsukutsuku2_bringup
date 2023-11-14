@@ -55,7 +55,7 @@
     <include file="$(find-pkg-share nav2_collision_monitor)/launch/collision_monitor_node.launch.py">
       <arg name="params_file" value="$(find-pkg-share tsukutsuku2_bringup)/config/nav2/collision_monitor_params.yaml" />
     </include>
-    <include file="$(find-pkg-share tsukutsuku2_bringup)/launch/filter_mask.launch.py">
+    <include file="$(find-pkg-share tsukutsuku2_bringup)/launch/nav2/filter_mask.launch.py">
       <arg name="params_file" value="$(var filter_path)"/>
       <arg name="mask" value="$(var mask_path)"/>
     </include>
