@@ -1,6 +1,6 @@
 <launch>
     <arg name="robot_urdf" default="$(find-pkg-share tsukutsuku2_description)/urdf/tsukutsuku.urdf.xacro" />
-    <arg name="place" default="tc" />
+    <arg name="place" default="campus" />
 
     <include file="$(find-pkg-share tsukutsuku_sensor_kit_launch)/launch/sensing.launch.xml"/>
 
@@ -27,9 +27,8 @@
       <param name="robot_description" value="$(command 'xacro $(var robot_urdf)')" />
     </node>
 
-    <node name="front_camera" pkg="v4l2_camera" exec="v4l2_camera_node">
-      <param name="pixel_format" value="YUYV" />
-      <param name="output_encording" value="yuv422" />
+    <node name="front_camera" pkg="usb_cam" exec="usb_cam_node_exe">
+      <param from="$(find-pkg-share tsukutsuku2_bringup)/config/front_camera.yaml" />
     </node>
     <node name="rviz2" pkg="rviz2" exec="rviz2" args="-d $(find-pkg-share tsukutsuku2_bringup)/rviz/localization.rviz "/>
 </launch>
