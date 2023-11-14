@@ -5,14 +5,15 @@
     <arg name="use_sim_time" default="false" />
     <arg name="autostart" default="true" />
     <arg name="robot_model" default="tsukutsuku" />
+
     <arg name="place" default="campus" />
     <arg name="map_path" default="/home/tsukutsuku/maps/$(var place)" />
     <arg name="ogm_file" default="map.yaml" />
     <arg name="ogm_path" default="$(var map_path)/ogm/$(var ogm_file)" />
-    <arg name="filter_file" default="filter_params.yaml"/>
-    <arg name="filter_path" default="$(var map_path)/ogm/$(var filter_file)" />
     <arg name="mask_file" default="binary_mask.yaml"/>
     <arg name="mask_path" default="$(var map_path)/ogm/$(var mask_file)" />
+
+    <arg name="filter_path" default="$(find-pkg-share tsukutsuku2_bringup)/config/nav2/filter_params.yaml" />
     <arg name="nav2_params_file" default="$(find-pkg-share tsukutsuku2_bringup)/config/nav2/nav2_$(var robot_model)_params.yaml" />
 
     <include file="$(find-pkg-share tsukutsuku_sensor_kit_launch)/launch/sensing.launch.xml"/>

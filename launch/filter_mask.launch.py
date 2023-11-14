@@ -10,6 +10,7 @@ from launch_ros.actions import LoadComposableNodes
 from launch_ros.actions import Node
 from launch_ros.descriptions import ComposableNode
 from nav2_common.launch import RewrittenYaml
+from launch import substitutions
 
 
 def generate_launch_description():
@@ -43,7 +44,8 @@ def generate_launch_description():
 
     declare_params_file_cmd = DeclareLaunchArgument(
             'params_file',
-            default_value="/home/tsukutsuku/maps/campus/ogm/filter_params.yaml",
+            default_value=[substitutions.TextSubstitution(text=os.path.join(
+                get_package_share_directory('tsukutsuku2_bringup'), 'config', '')), substitutions.TextSubstitution(text='filter_params.yaml')],
             description='Full path to the ROS 2 parameters file to use')
 
     declare_mask_yaml_file_cmd = DeclareLaunchArgument(
@@ -124,10 +126,10 @@ def generate_launch_description():
     ld.add_action(declare_params_file_cmd)
     ld.add_action(declare_mask_yaml_file_cmd)
 
-    # ld.add_action(start_lifecycle_manager_cmd)
-    # ld.add_action(start_map_server_cmd)
-    # ld.add_action(start_costmap_filter_info_server_cmd)
+    ld.add_action(start_lifecycle_manager_cmd)
+    ld.add_action(start_map_server_cmd)
+    ld.add_action(start_costmap_filter_info_server_cmd)
 
-    ld.add_action(load_composable_nodes)
+    # ld.add_action(load_composable_nodes)
 
     return ld
