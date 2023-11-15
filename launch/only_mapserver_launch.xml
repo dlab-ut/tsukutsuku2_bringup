@@ -37,7 +37,7 @@
     </node>
 
     <!-- navigation -->
-    <include file="$(find-pkg-share tsukutsuku2_bringup)/launch/bringup_launch_only_mapserver.py">
+    <include file="$(find-pkg-share tsukutsuku2_bringup)/launch/nav2/bringup_launch_only_mapserver.py">
       <arg name="use_sim_time" value="$(var use_sim_time)" />
       <arg name="autostart" value="$(var autostart)" />
       <arg name="map" value="$(var ogm_path)" />
