@@ -129,7 +129,7 @@ def generate_launch_description():
                 arguments=['--ros-args', '--log-level', log_level],
                 remappings=remappings),
             Node(
-                package='nav2_planner',
+                package='nav2_planner_shorten',
                 executable='planner_server',
                 name='planner_server',
                 output='screen',
@@ -208,8 +208,8 @@ def generate_launch_description():
                 parameters=[configured_params],
                 remappings=remappings),
             ComposableNode(
-                package='nav2_planner',
-                plugin='nav2_planner::PlannerServer',
+                package='nav2_planner_shorten',
+                plugin='nav2_planner::PlannerServerShorten',
                 name='planner_server',
                 parameters=[configured_params],
                 remappings=remappings),
