@@ -10,10 +10,10 @@
         <ClearEntireCostmap name="ClearLocalCostmap-Subtree" service_name="local_costmap/clear_entirely_local_costmap"/>
         <ClearEntireCostmap name="ClearGlobalCostmap-Subtree" service_name="global_costmap/clear_entirely_global_costmap"/>
       </Sequence>
-      <RecoveryNode number_of_retries="6" name="NavigateRecovery">
+      <RecoveryNode number_of_retries="255" name="NavigateRecovery">
         <PipelineSequence name="NavigateWithReplanning">
           <RateController hz="2">
-            <RecoveryNode number_of_retries="10" name="ComputePathThroughPoses">
+            <RecoveryNode number_of_retries="3" name="ComputePathThroughPoses">
               <ReactiveSequence>
                 <RemovePassedGoals input_goals="{goals}" output_goals="{goals}" radius="1.0"/>
                 <ComputePathThroughPoses goals="{goals}" path="{path}" planner_id="GridBased"/>
@@ -21,7 +21,6 @@
               <ReactiveFallback name="ComputePathThroughPosesRecoveryFallback">
                 <GoalUpdated/>
                 <Sequence name="ClearingActionWithWait">
-                  <!-- <ClearEntireCostmap name="ClearGlobalCostmap-Context" service_name="global_costmap/clear_entirely_global_costmap"/> -->
                   <ClearCostmapAroundRobot name="ClearGlobalCostmap-Context" service_name="global_costmap/clear_around_global_costmap" reset_distance="16.0"/>
                   <Wait wait_duration="1" />
                 </Sequence>
