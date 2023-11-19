@@ -239,7 +239,7 @@ global_costmap:
           data_type: "LaserScan"
           raytrace_max_range: 8.0
           raytrace_min_range: 0.0
-          obstacle_max_range: 4.0
+          obstacle_max_range: 6.0
           obstacle_min_range: 0.0
         front_right_urg:
           topic: /sensing/lidar/front_right_urg/switched_scan
@@ -250,7 +250,7 @@ global_costmap:
           data_type: "LaserScan"
           raytrace_max_range: 8.0
           raytrace_min_range: 0.0
-          obstacle_max_range: 4.0
+          obstacle_max_range: 6.0
           obstacle_min_range: 0.0
         rear_urg:
           topic: /sensing/lidar/rear_urg/switched_scan
@@ -288,11 +288,12 @@ map_saver:
 planner_server:
   ros__parameters:
     expected_planner_frequency: 2.0
-    planning_goals_size: 5
+    planning_goals_size: 3
     planner_plugins: ["GridBased"]
     GridBased:
       # plugin: "nav2_smac_planner/SmacPlanner2D"
       plugin: "nav2_smac_planner/SmacPlannerHybrid"
+      minimum_turning_radius: 0.2
       tolerance: 0.125
       max_planning_time: 1.0
       allow_unknown: true
