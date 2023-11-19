@@ -7,7 +7,7 @@
     <arg name="autostart" default="true" />
     <arg name="robot_model" default="tsukutsuku" />
 
-    <arg name="place" default="campus" />
+    <arg name="place" default="tc" />
     <arg name="map_path" default="/home/tsukutsuku/maps/$(var place)" />
     <arg name="ogm_file" default="map.yaml" />
     <arg name="ogm_path" default="$(var map_path)/ogm/$(var ogm_file)" />
