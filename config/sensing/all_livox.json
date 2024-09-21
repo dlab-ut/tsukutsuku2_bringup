@@ -29,12 +29,12 @@
       "pcl_data_type" : 1,
       "pattern_mode" : 0,
       "extrinsic_parameter" : {
-        "roll":  180,
+        "roll":  0,
         "pitch": 0,
-        "yaw": -45,
-        "x": 72,
-        "y": -30,
-        "z": 14
+        "yaw": 0,
+        "x": 0,
+        "y": 0,
+        "z": 0
       }
     },
     {
@@ -42,12 +42,12 @@
       "pcl_data_type" : 1,
       "pattern_mode" : 0,
       "extrinsic_parameter" : {
-        "roll":  180,
+        "roll":  0,
         "pitch": 0,
-        "yaw": 45,
-        "x": 72,
-        "y": 30,
-        "z": 14
+        "yaw": 0,
+        "x": 0,
+        "y": 0,
+        "z": 0
       }
     },
     {
@@ -55,12 +55,12 @@
       "pcl_data_type" : 1,
       "pattern_mode" : 0,
       "extrinsic_parameter" : {
-        "roll": 180,
+        "roll": 0,
         "pitch": 0,
         "yaw": 0,
-        "x": -14,
+        "x": 0,
         "y": 0,
-        "z": 10
+        "z": 0
       }
     }
   ]
