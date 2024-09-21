@@ -3,8 +3,8 @@
 
     <include file="$(find-pkg-share tsukutsuku_sensor_kit_launch)/launch/sensing.launch.xml"/>
 
-    <include file="$(find-pkg-share ypspur_modoki)/run.launch.xml">
-    </include>
+    <include file="$(find-pkg-share ypspur_modoki)/run.launch.xml"/>
+    
     <include file="$(find-pkg-share tsukutsuku2_bringup)/launch/joy_to_twist.launch.py" />
 
     <!-- tf publisher -->
@@ -12,8 +12,8 @@
       <param name="robot_description" value="$(command 'xacro $(var robot_urdf)')" />
     </node>
 
-    <node name="front_camera" pkg="usb_cam" exec="usb_cam_node_exe">
+    <!-- <node name="front_camera" pkg="usb_cam" exec="usb_cam_node_exe">
       <param from="$(find-pkg-share tsukutsuku2_bringup)/config/front_camera.yaml" />
-    </node>
+    </node> -->
     <node name="rviz2" pkg="rviz2" exec="rviz2" args="-d $(find-pkg-share tsukutsuku2_bringup)/rviz/sensor.rviz "/>
 </launch>
