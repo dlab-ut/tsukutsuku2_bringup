@@ -30,10 +30,7 @@ collision_monitor:
       slowdown_ratio: 0.6
       visualize: True
       polygon_pub_topic: "slow_40percent"
-    observation_sources: ["front_left_urg", "front_right_urg"]
-    front_left_urg:
-      type: "scan"
-      topic: "/sensing/lidar/front_left_urg/scan"
-    front_right_urg:
-      type: "scan"
-      topic: "/sensing/lidar/front_right_urg/scan"
+    observation_sources: ["livox"]
+    livox:
+      type: "pointcloud"
+      topic: "/sensing/lidar/livox/flatten_pcd"

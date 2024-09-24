@@ -151,40 +151,17 @@ local_costmap:
         enabled: True
         max_obstacle_height: 30.0
         min_obstacle_height: -30.0
-        observation_sources: front_left_urg front_right_urg rear_urg
-        front_left_urg:
-          topic: /sensing/lidar/front_left_urg/scan
+        observation_sources: livox
+        livox:
+          topic: /sensing/lidar/livox/flatten_pcd
           max_obstacle_height: 15.0
           min_obstacle_height: -15.0
           clearing: True
           marking: True
-          data_type: "LaserScan"
+          data_type: "PointCloud2"
           raytrace_max_range: 8.0
           raytrace_min_range: 0.0
           obstacle_max_range: 4.0
-          obstacle_min_range: 0.0
-        front_right_urg:
-          topic: /sensing/lidar/front_right_urg/scan
-          max_obstacle_height: 15.0
-          min_obstacle_height: -15.0
-          clearing: True
-          marking: True
-          data_type: "LaserScan"
-          raytrace_max_range: 8.0
-          raytrace_min_range: 0.0
-          obstacle_max_range: 4.0
-          obstacle_min_range: 0.0
-        rear_urg:
-          topic: /sensing/lidar/rear_urg/scan
-          max_obstacle_height: 15.0
-          min_obstacle_height: -15.0
-          clearing: True
-          marking: True
-          data_type: "LaserScan"
-          expected_update_rate: 40.0
-          raytrace_max_range: 8.0
-          raytrace_min_range: 0.0
-          obstacle_max_range: 1.0
           obstacle_min_range: 0.0
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
@@ -229,40 +206,17 @@ global_costmap:
         max_obstacle_height: 30.0
         min_obstacle_height: -30.0
         footprint_clearing_enabled: True
-        observation_sources: front_left_urg front_right_urg rear_urg 
-        front_left_urg:
-          topic: /sensing/lidar/front_left_urg/switched_scan
+        observation_sources: livox 
+        livox:
+          topic: /sensing/lidar/livox/flatten_pcd/switched_scan
           max_obstacle_height: 15.0
           min_obstacle_height: -15.0
           clearing: True
           marking: True
-          data_type: "LaserScan"
+          data_type: "PointCloud2"
           raytrace_max_range: 8.0
           raytrace_min_range: 0.0
           obstacle_max_range: 6.0
-          obstacle_min_range: 0.0
-        front_right_urg:
-          topic: /sensing/lidar/front_right_urg/switched_scan
-          max_obstacle_height: 15.0
-          min_obstacle_height: -15.0
-          clearing: True
-          marking: True
-          data_type: "LaserScan"
-          raytrace_max_range: 8.0
-          raytrace_min_range: 0.0
-          obstacle_max_range: 6.0
-          obstacle_min_range: 0.0
-        rear_urg:
-          topic: /sensing/lidar/rear_urg/switched_scan
-          max_obstacle_height: 15.0
-          min_obstacle_height: -15.0
-          clearing: True
-          marking: True
-          data_type: "LaserScan"
-          expected_update_rate: 40.0
-          raytrace_max_range: 8.0
-          raytrace_min_range: 0.0
-          obstacle_max_range: 1.0
           obstacle_min_range: 0.0
       binary_filter:
         plugin: "nav2_costmap_2d::BinaryFilter"
