@@ -33,4 +33,4 @@ collision_monitor:
     observation_sources: ["livox"]
     livox:
       type: "pointcloud"
-      topic: "/sensing/lidar/livox/flatten_pcd"
+      topic: "/sensing/lidar/livox/ground_removed_pcd"
