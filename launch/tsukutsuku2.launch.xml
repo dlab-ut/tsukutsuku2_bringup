@@ -19,7 +19,7 @@
 
     <!-- sensing -->
     <include file="$(find-pkg-share tsukutsuku_sensor_kit_launch)/launch/sensing.launch.xml"/>
-    <include file="$(find-pkg-share tsukutsuku_pcd_utils)/launch/livox_pcd_filter.launch.xml"/>
+    <include file="$(find-pkg-share tc_livox_utils)/launch/livox_pcd_filter.launch.xml"/>
 
     <!-- ypspur -->
     <include file="$(find-pkg-share ypspur_modoki)/run.launch.xml"/>
