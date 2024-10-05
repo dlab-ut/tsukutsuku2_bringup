@@ -158,36 +158,58 @@ local_costmap:
         min_obstacle_height: -8.0
         unknown_threshold: 15
         mark_threshold: 0
-        observation_sources: pointcloud
-        combination_method: 1
-        pointcloud:  # no frame set, uses frame from message
-          topic: /sensing/lidar/livox/ground_removed_pcd
+        observation_sources: front_left_livox front_right_livox rear_livox
+        front_left_livox:
+          topic: /sensing/lidar/livox/left/ground_removed
           max_obstacle_height: 6.0
           min_obstacle_height: -8.0
+          clearing: True
+          marking: True
+          data_type: "PointCloud2"
+          raytrace_max_range: 8.0
+          raytrace_min_range: 0.0
+          obstacle_max_range: 6.0 # 本当にこの値でいいのか？
+          obstacle_min_range: 0.0
+        front_right_livox:
+          topic: /sensing/lidar/livox/right/ground_removed
+          max_obstacle_height: 6.0
+          min_obstacle_height: -8.0
+          clearing: True
+          marking: True
+          data_type: "PointCloud2"
+          raytrace_max_range: 8.0
+          raytrace_min_range: 0.0
           obstacle_max_range: 6.0
           obstacle_min_range: 0.0
-          raytrace_max_range: 8.0
-          raytrace_min_range: 0.0
-          clearing: True
-          marking: True
-          data_type: "PointCloud2"
-      obstacle_layer:
-        plugin: "nav2_costmap_2d::ObstacleLayer"
-        enabled: True
-        max_obstacle_height: 30.0
-        min_obstacle_height: -30.0
-        observation_sources: livox
-        livox:
-          topic: /sensing/lidar/livox/flatten_pcd
-          max_obstacle_height: 15.0
-          min_obstacle_height: -15.0
+        rear_livox:
+          topic: /sensing/lidar/livox/rear/ground_removed
+          max_obstacle_height: 6.0
+          min_obstacle_height: -8.0
           clearing: True
           marking: True
           data_type: "PointCloud2"
           raytrace_max_range: 8.0
           raytrace_min_range: 0.0
-          obstacle_max_range: 4.0
+          obstacle_max_range: 6.0
           obstacle_min_range: 0.0
+      # なんでこれがいるのかわからない ---------------------------------------
+      # obstacle_layer:
+      #   plugin: "nav2_costmap_2d::ObstacleLayer"
+      #   enabled: True
+      #   max_obstacle_height: 30.0
+      #   min_obstacle_height: -30.0
+      #   observation_sources: livox
+      #   livox:
+      #     topic: /sensing/lidar/livox/flatten_pcd
+      #     max_obstacle_height: 15.0
+      #     min_obstacle_height: -15.0
+      #     clearing: True
+      #     marking: True
+      #     data_type: "PointCloud2"
+      #     raytrace_max_range: 8.0
+      #     raytrace_min_range: 0.0
+      #     obstacle_max_range: 4.0
+      #     obstacle_min_range: 0.0
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
         cost_scaling_factor: 1.0
@@ -255,19 +277,46 @@ global_costmap:
         min_obstacle_height: -8.0
         unknown_threshold: 15
         mark_threshold: 0
-        observation_sources: pointcloud
-        combination_method: 1
-        pointcloud:  # no frame set, uses frame from message
-          topic: /sensing/lidar/livox/ground_removed_pcd
+        observation_sources: front_left_livox front_right_livox rear_livox
+        front_left_livox:
+          topic: /sensing/lidar/livox/left/ground_removed
           max_obstacle_height: 6.0
           min_obstacle_height: -8.0
-          obstacle_max_range: 10.5
-          obstacle_min_range: 0.0
-          raytrace_max_range: 15.0
-          raytrace_min_range: 0.0
           clearing: True
           marking: True
           data_type: "PointCloud2"
+          raytrace_max_range: 8.0
+          raytrace_min_range: 0.0
+          obstacle_max_range: 6.0
+          obstacle_min_range: 0.0
+        front_right_livox:
+          topic: /sensing/lidar/livox/right/ground_removed
+          max_obstacle_height: 6.0
+          min_obstacle_height: -8.0
+          clearing: True
+          marking: True
+          data_type: "PointCloud2"
+          raytrace_max_range: 8.0
+          raytrace_min_range: 0.0
+          obstacle_max_range: 6.0
+          obstacle_min_range: 0.0
+        rear_livox:
+          topic: /sensing/lidar/livox/rear/ground_removed
+          max_obstacle_height: 6.0
+          min_obstacle_height: -8.0
+          clearing: True
+          marking: True
+          data_type: "PointCloud2"
+          raytrace_max_range: 8.0
+          raytrace_min_range: 0.0
+          obstacle_max_range: 6.0
+          obstacle_min_range: 0.0
+          # max_obstacle_height: 6.0
+          # min_obstacle_height: -8.0
+          # obstacle_max_range: 10.5
+          # obstacle_min_range: 0.0
+          # raytrace_max_range: 15.0
+          # raytrace_min_range: 0.0
       binary_filter:
         plugin: "nav2_costmap_2d::BinaryFilter"
         enabled: True
