@@ -16,21 +16,27 @@ collision_monitor:
     polygons: ["Slow20percent", "Slow40percent"]
     Slow20percent:
       type: "polygon"
-      points: [2.9, 1.1, 2.9, -1.1, 0.5, -1.1, 0.5, 1.1]
+      points: [3.5, 1.1, 3.5, -1.1, 0.0, -1.1, 0.0, 1.1]
       action_type: "slowdown"
       max_points: 5
-      slowdown_ratio: 0.8
+      slowdown_ratio: 0.9
       visualize: True
       polygon_pub_topic: "slow_20percent"
     Slow40percent:
       type: "polygon"
-      points: [1.9, 0.7, 1.9, -0.7, 0.5, -0.7, 0.5, 0.7]
+      points: [2.2, 0.7, 2.2, -0.7, 0.0, -0.7, 0.0, 0.7]
       action_type: "slowdown"
       max_points: 5
-      slowdown_ratio: 0.6
+      slowdown_ratio: 0.9
       visualize: True
       polygon_pub_topic: "slow_40percent"
-    observation_sources: ["livox"]
-    livox:
+    observation_sources: ["fl_livox", "fr_livox", "rr_livox"]
+    fl_livox:
       type: "pointcloud"
-      topic: "/sensing/lidar/livox/ground_removed_pcd"
+      topic: "/sensing/lidar/livox/left/ground_removed"
+    fr_livox:
+      type: "pointcloud"
+      topic: "/sensing/lidar/livox/right/ground_removed"
+    rr_livox:
+      type: "pointcloud"
+      topic: "/sensing/lidar/livox/rear/ground_removed"
