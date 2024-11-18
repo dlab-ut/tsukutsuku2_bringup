@@ -1,6 +1,6 @@
 <launch>
     <arg name="robot_urdf" default="$(find-pkg-share tsukutsuku2_description)/urdf/tsukutsuku.urdf.xacro" />
-    <arg name="place" default="campus" />
+    <arg name="place" default="tc" />
 
     <include file="$(find-pkg-share tsukutsuku_sensor_kit_launch)/launch/sensing.launch.xml"/>
 

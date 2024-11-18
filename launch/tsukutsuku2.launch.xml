@@ -13,9 +13,18 @@
     <arg name="ogm_path" default="$(var map_path)/ogm/$(var ogm_file)" />
     <arg name="mask_file" default="binary_mask.yaml"/>
     <arg name="mask_path" default="$(var map_path)/ogm/$(var mask_file)" />
+    <arg name="speed_mask_file" default="speed_mask.yaml"/>
+    <arg name="speed_mask_path" default="$(var map_path)/ogm/$(var speed_mask_file)"/>
+
 
     <arg name="filter_path" default="$(find-pkg-share tsukutsuku2_bringup)/config/nav2/filter_params.yaml" />
+    <arg name="speed_filter_path" default="$(find-pkg-share tsukutsuku2_bringup)/config/nav2/speed_filter_params.yaml"/>
     <arg name="nav2_params_file" default="$(find-pkg-share tsukutsuku2_bringup)/config/nav2/nav2_$(var robot_model)_params.yaml" />
+
+    <arg name="front_left_scan_topic" default="/sensing/lidar/livox/left/ground_removed_laserscan"/>
+    <arg name="front_right_scan_topic" default="/sensing/lidar/livox/right/ground_removed_laserscan"/>
+    <arg name="rear_scan_topic" default="/sensing/lidar/livox/rear/ground_removed_laserscan"/>
+    <arg name="binary_state_topic" default="/binary_state"/>
 
     <!-- sensing -->
     <include file="$(find-pkg-share tsukutsuku_sensor_kit_launch)/launch/sensing.launch.xml"/>
@@ -54,10 +63,21 @@
     <include file="$(find-pkg-share nav2_collision_monitor)/launch/collision_monitor_node.launch.py">
       <arg name="params_file" value="$(find-pkg-share tsukutsuku2_bringup)/config/nav2/collision_monitor_params.yaml" />
     </include>
+
+    <!-- binary_filter -->
     <include file="$(find-pkg-share tsukutsuku2_bringup)/launch/nav2/filter_mask.launch.py">
       <arg name="params_file" value="$(var filter_path)"/>
       <arg name="mask" value="$(var mask_path)"/>
     </include>
+
+    <!-- speed_filter -->
+    <include file="$(find-pkg-share tsukutsuku2_bringup)/launch/nav2/speed_mask.launch.py">
+      <arg name="params_file" value="$(var speed_filter_path)"/>
+      <arg name="mask" value="$(var speed_mask_path)"/>
+    </include>
+
+    <!-- laserscan_switcher -->
+    <include file="$(find-pkg-share tsukutsuku2_bringup)/launch/laserscan_switcher.launch.xml"/>
 
     <include file="$(find-pkg-share inputatwaypoint_sender)/launch/nextwaypoint.launch.py"/>
 
