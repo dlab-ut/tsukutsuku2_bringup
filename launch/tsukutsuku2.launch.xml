@@ -65,4 +65,7 @@
       <param from="$(find-pkg-share tsukutsuku2_bringup)/config/front_camera.yaml" />
     </node>
     <node name="rviz2" pkg="rviz2" exec="rviz2" args="-d $(find-pkg-share tsukutsuku2_bringup)/rviz/navigation.rviz "/>
+
+    <!--task b-->
+    <include file="$(find-pkg-share signal_recognition)/launch/signal_recognition.launch.xml"/>
 </launch>
