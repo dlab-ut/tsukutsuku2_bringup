@@ -7,7 +7,7 @@
     <arg name="autostart" default="true" />
     <arg name="robot_model" default="tsukutsuku" />
 
-    <arg name="place" default="tc" />
+    <arg name="place" default="campus" />
     <arg name="map_path" default="/home/tsukutsuku/maps/$(var place)" />
     <arg name="ogm_file" default="map.yaml" />
     <arg name="ogm_path" default="$(var map_path)/ogm/$(var ogm_file)" />
@@ -28,6 +28,7 @@
 
     <!-- sensing -->
     <include file="$(find-pkg-share tsukutsuku_sensor_kit_launch)/launch/sensing.launch.xml"/>
+    <include file="$(find-pkg-share tc_cam_utils)/launch/vlcampr.launch.xml"/>
     <include file="$(find-pkg-share tc_livox_utils)/launch/livox_pcd_filter.launch.xml"/>
 
     <!-- ypspur -->
