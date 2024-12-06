@@ -1,6 +1,6 @@
 collision_monitor:
   ros__parameters:
-    base_frame_id: "base_footprint"
+    base_frame_id: "tsukutsuku_base_link"
     odom_frame_id: "map"
     cmd_vel_in_topic: "cmd_vel_nav"
     cmd_vel_out_topic: "cmd_vel_limited"

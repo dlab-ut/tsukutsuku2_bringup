@@ -7,6 +7,8 @@ Panels:
         - /Waypoint1
         - /Waypoint_Text1
         - /LivoxGndRemoved1
+        - /LivoxRightRemoved1/Topic1
+        - /LivoxLeftRemoved1/Topic1
       Splitter Ratio: 0.5
     Tree Height: 278
   - Class: rviz_common/Selection
@@ -18,6 +20,9 @@ Panels:
   - Class: rviz_common/Views
     Expanded:
       - /Current View1
+      - /Init Campus1
+      - /Init TC1
+      - /base_link1
     Name: Views
     Splitter Ratio: 0.5
   - Class: rviz_common/Time
@@ -59,11 +64,9 @@ Visualization Manager:
           Value: true
         center_camera_link:
           Value: true
-        center_web_camera_link:
-          Value: true
         front_camera_link:
           Value: true
-        front_web_camera_link:
+        front_down_camera_link:
           Value: true
         imu_link:
           Value: true
@@ -81,6 +84,8 @@ Visualization Manager:
           Value: true
         scala_decoder_sdk_lidar:
           Value: true
+        tsukutsuku_base_link:
+          Value: true
         valeo_uls_base_link:
           Value: true
         velodyne:
@@ -95,31 +100,30 @@ Visualization Manager:
       Tree:
         map:
           base_link:
-            base_footprint:
-              {}
-            center_camera_link:
-              center_web_camera_link:
+            tsukutsuku_base_link:
+              base_footprint:
                 {}
-              front_camera_link:
+              center_camera_link:
+                front_camera_link:
+                  {}
+              front_down_camera_link:
                 {}
-            front_web_camera_link:
-              {}
-            imu_link:
-              {}
-            left_livox_link:
-              {}
-            livox_link:
-              {}
-            rear_livox_link:
-              {}
-            right_livox_link:
-              {}
-            scala_decoder_sdk_lidar:
-              {}
-            valeo_uls_base_link:
-              {}
-            velodyne:
-              {}
+              imu_link:
+                {}
+              left_livox_link:
+                {}
+              livox_link:
+                {}
+              rear_livox_link:
+                {}
+              right_livox_link:
+                {}
+              scala_decoder_sdk_lidar:
+                {}
+              valeo_uls_base_link:
+                {}
+              velodyne:
+                {}
           ndt_base_link:
             {}
           viewer:
@@ -141,7 +145,7 @@ Visualization Manager:
       Enabled: true
       Invert Rainbow: false
       Max Color: 255; 255; 255
-      Max Intensity: 180
+      Max Intensity: 255
       Min Color: 0; 0; 0
       Min Intensity: 0
       Name: Velodyne
@@ -479,9 +483,18 @@ Visualization Manager:
       size: 172
       text size: 35
       top: 20
-    - Class: rviz_2d_overlay_plugins/TextOverlay
+    - Align Bottom: false
+      Background Alpha: 0.800000011920929
+      Background Color: 0; 0; 0
+      Class: rviz_2d_overlay_plugins/TextOverlay
       Enabled: true
+      Foreground Alpha: 0.800000011920929
+      Foreground Color: 25; 255; 240
+      Invert Shadow: false
       Name: Siganl
+      Overtake BG Color Properties: false
+      Overtake FG Color Properties: false
+      Overtake Position Properties: false
       Topic:
         Depth: 5
         Durability Policy: Volatile
@@ -489,7 +502,15 @@ Visualization Manager:
         Reliability Policy: Reliable
         Value: /marker
       Value: true
-      auto color change: true
+      font: DejaVu Sans Mono
+      height: 128
+      hor_alignment: left
+      hor_dist: 0
+      line width: 2
+      text size: 12
+      ver_alignment: top
+      ver_dist: 0
+      width: 128
     - Class: rviz_default_plugins/Image
       Enabled: false
       Max Value: 1
@@ -585,6 +606,74 @@ Visualization Manager:
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz_default_plugins/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: Intensity
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 150
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: LivoxRightRemoved
+      Position Transformer: XYZ
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.029999999329447746
+      Style: Flat Squares
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Best Effort
+        Value: /sensing/lidar/livox/right/ground_removed
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz_default_plugins/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: Intensity
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 88
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: LivoxLeftRemoved
+      Position Transformer: XYZ
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.029999999329447746
+      Style: Flat Squares
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Best Effort
+        Value: /sensing/lidar/livox/left/ground_removed
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -673,7 +762,7 @@ Visualization Manager:
         Name: base_link
         Near Clip Distance: 0.009999999776482582
         Scale: 32.09019470214844
-        Target Frame: base_link
+        Target Frame: tsukutsuku_base_link
         Value: TopDownOrtho (rviz_default_plugins)
         X: -0.8783493041992188
         Y: -0.45629119873046875

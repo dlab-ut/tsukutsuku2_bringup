@@ -4,6 +4,7 @@
     <arg name="left_scan_topic" default="/sensing/lidar/livox/left/ground_removed_laserscan"/>
     <arg name="right_scan_topic" default="/sensing/lidar/livox/right/ground_removed_laserscan"/>
     <arg name="rear_scan_topic" default="/sensing/lidar/livox/rear/ground_removed_laserscan"/>
+    <arg name="uls_scan_topic" default="/uls/laser"/>
     <arg name="binary_state_topic" default="/binary_state"/>
 
     <node pkg="laserscan_switcher" exec="laserscan_switcher" name="left_laserscan_switcher">
@@ -21,6 +22,13 @@
     <node pkg="laserscan_switcher" exec="laserscan_switcher" name="rear_laserscan_switcher">
       <param name="scan_topic" value="$(var rear_scan_topic)"/>
       <param name="scan_switched_topic" value="$(var rear_scan_topic)_switched"/>
+      <param name="binary_state_topic" value="$(var binary_state_topic)"/>
+      <param name="use_sim_time" value="$(var use_sim_time)"/>
+    </node>
+
+    <node pkg="laserscan_switcher" exec="laserscan_switcher" name="uls_laserscan_switcher">
+      <param name="scan_topic" value="$(var uls_scan_topic)"/>
+      <param name="scan_switched_topic" value="$(var uls_scan_topic)_switched"/>
       <param name="binary_state_topic" value="$(var binary_state_topic)"/>
       <param name="use_sim_time" value="$(var use_sim_time)"/>
     </node>

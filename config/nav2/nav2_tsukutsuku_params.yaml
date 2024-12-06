@@ -2,7 +2,7 @@ bt_navigator:
   ros__parameters:
     # use_sim_time: True
     global_frame: map
-    robot_base_frame: base_link
+    robot_base_frame: tsukutsuku_base_link
     odom_topic: /localization/pose_twist_fusion_filter/kinematic_state
     default_nav_through_poses_bt_xml: "/home/tsukutsuku/autoware/src/tsukutsuku/tsukutsuku2_bringup/config/nav2/navigate_through_poses_tsukutsuku.xml"
     default_nav_to_pose_bt_xml: "/home/tsukutsuku/autoware/src/tsukutsuku/tsukutsuku2_bringup/config/nav2/navigate_to_pose_tsukutsuku.xml"
@@ -84,7 +84,7 @@ controller_server:
       min_vel_y: 0.0
       max_vel_x: 1.2
       max_vel_y: 0.0
-      max_vel_theta: 1.5
+      max_vel_theta: 2.0
       min_speed_xy: 0.05
       max_speed_xy: 1.2
       min_speed_theta: 0.05
@@ -115,7 +115,7 @@ controller_server:
       ObstacleFootprint.sum_scores: false
       PathAlign.scale: 24.0
       PathAlign.forward_point_distance: 0.1
-      GoalAlign.scale: 6.0
+      GoalAlign.scale: 16.0
       GoalAlign.forward_point_distance: 0.1
       PathDist.scale: 18.0
       GoalDist.scale: 3.0
@@ -135,7 +135,7 @@ local_costmap:
       update_frequency: 10.0 #Hz
       publish_frequency: 10.0 #Hz
       global_frame: map
-      robot_base_frame: base_link
+      robot_base_frame: tsukutsuku_base_link
       # use_sim_time: True
       rolling_window: true
       width: 20
@@ -153,7 +153,7 @@ local_costmap:
         enabled: True
         max_obstacle_height: 30.0
         min_obstacle_height: -30.0
-        observation_sources: front_left_urg front_right_urg rear_urg
+        observation_sources: front_left_urg front_right_urg rear_urg uls_urg
         front_left_urg:
           topic: /sensing/lidar/livox/left/ground_removed_laserscan
           max_obstacle_height: 15.0
@@ -191,6 +191,19 @@ local_costmap:
           obstacle_max_range: 1.0
           obstacle_min_range: 0.0
           observation_persistence: 2.0 
+        uls_urg:
+          topic:  /uls/laser
+          max_obstacle_height: 15.0
+          min_obstacle_height: -15.0
+          clearing: True
+          marking: True
+          data_type: "LaserScan"
+          expected_update_rate: 40.0
+          raytrace_max_range: 8.0
+          raytrace_min_range: 0.0
+          obstacle_max_range: 1.0
+          obstacle_min_range: 0.0
+          observation_persistence: 2.0 
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
         cost_scaling_factor: 10.0
@@ -210,20 +223,20 @@ global_costmap:
       update_frequency: 3.0
       publish_frequency: 3.0
       global_frame: map
-      robot_base_frame: base_link
+      robot_base_frame: tsukutsuku_base_link
       footprint: '[ [-0.2, 0.358], [0.9, 0.358], [0.9, -0.358], [-0.2, -0.358] ]'
       footprint_padding: 0.03
       resolution: 0.05
       track_unknown_space: true
       always_send_full_costmap: True
       plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
-      filters: ["speed_filter", "binary_filter"]
+      filters: ["binary_filter", "speed_filter"]
       static_layer:
         plugin: "nav2_costmap_2d::StaticLayer"
         map_subscribe_transient_local: True
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
-        cost_scaling_factor: 20.0
+        cost_scaling_factor: 10.0
         inflation_radius: 5.0
       inflation_layer2:
         plugin: "nav2_costmap_2d::InflationLayer"
@@ -235,7 +248,7 @@ global_costmap:
         max_obstacle_height: 30.0
         min_obstacle_height: -30.0
         footprint_clearing_enabled: True
-        observation_sources: front_left_urg front_right_urg rear_urg 
+        observation_sources: front_left_urg front_right_urg rear_urg uls_urg
         front_left_urg:
           topic:  /sensing/lidar/livox/left/ground_removed_laserscan_switched
           max_obstacle_height: 15.0
@@ -262,6 +275,19 @@ global_costmap:
           observation_persistence: 2.0 
         rear_urg:
           topic:  /sensing/lidar/livox/rear/ground_removed_laserscan_switched
+          max_obstacle_height: 15.0
+          min_obstacle_height: -15.0
+          clearing: True
+          marking: True
+          data_type: "LaserScan"
+          expected_update_rate: 40.0
+          raytrace_max_range: 8.0
+          raytrace_min_range: 0.0
+          obstacle_max_range: 1.0
+          obstacle_min_range: 0.0
+          observation_persistence: 2.0 
+        uls_urg:
+          topic:  /uls/laser_switched
           max_obstacle_height: 15.0
           min_obstacle_height: -15.0
           clearing: True
@@ -335,7 +361,7 @@ behavior_server:
     spin:
       plugin: "nav2_behaviors/Spin"
     global_frame: map
-    robot_base_frame: base_link
+    robot_base_frame: tsukutsuku_base_link
     transform_timeout: 0.1
     simulate_ahead_time: 0.5
 

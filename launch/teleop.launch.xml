@@ -16,4 +16,8 @@
       <param from="$(find-pkg-share tsukutsuku2_bringup)/config/front_camera.yaml" />
     </node> -->
     <node name="rviz2" pkg="rviz2" exec="rviz2" args="-d $(find-pkg-share tsukutsuku2_bringup)/rviz/sensor.rviz "/>
+
+    <include file="$(find-pkg-share task_a_pkg)/launch/task_a_nodes.launch.xml">
+      <arg name="place" value="tc"/>
+    </include>
 </launch>
